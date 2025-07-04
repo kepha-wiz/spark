@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Shack Institute of Statistics and Data Science</title>
+    <link rel="stylesheet" href="public/css/events.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <style>
+        #loader-bg {
+            position: fixed;
+            z-index: 9999;
+            background: #fff;
+            width: 100vw;
+            height: 100vh;
+            top: 0; left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .spark-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spark-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffb300 0%, #1a237e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            animation: spin 1.4s linear infinite;
+        }
+        .spark-logo span {
+            color: #fff;
+            font-size: 2.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .spark-loader-text {
+            font-size: 1.2em;
+            color: #1a237e;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #1a237e;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                z-index: 1001;
+                padding: 0;
+                margin: 0;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+            }, 1200);
+
+            // Responsive nav
+            const navToggle = document.getElementById('navbar-toggle');
+            const navUl = document.querySelector('nav ul');
+            navToggle.addEventListener('click', function() {
+                navUl.classList.toggle('open');
+            });
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navUl.classList.remove('open'));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="events-header">
+            <h1>Upcoming Events</h1>
+            <p>Join us for our upcoming conferences, webinars, and workshops!</p>
+        </section>
+
+        <section class="event-calendar">
+            <h2>Event Calendar</h2>
+            <div id="calendar"></div>
+        </section>
+
+        <section class="event-list">
+            <h2>All Events</h2>
+            <div id="events-container">
+                <!-- Events will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><font color="white">&copy; 2023 SPARK Institute of Data Science and Applied Statistics.. All rights reserved.</font></p>
+    </footer>
+
+    <script src="js/events.js"></script>
+</body>
+</html>

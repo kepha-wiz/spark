@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK Institute of Data Science and Applied Statistics</title>
+    <link rel="stylesheet" href="public/css/main.css">
+    <script src="public/js/main.js" defer></script>
+    <script src="public/js/navbar.js" defer></script>
+    <!-- Update paths if moved to docs -->
+    <style>
+        /* Loader styles */
+        #loader-bg {
+            position: fixed;
+            z-index: 9999;
+            background: #fff;
+            width: 100vw;       
+            height: 100vh;
+            top: 0; left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .spark-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spark-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffb300 0%, #1a237e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            animation: spin 1.4s linear infinite;
+        }
+        .spark-logo span {
+            color: #fff;
+            font-size: 2.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .spark-loader-text {
+            font-size: 1.2em;
+            color: #1a237e;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .hero-image {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin-bottom: 32px;
+            box-shadow: 0 6px 32px rgba(30,34,90,0.13);
+        }
+        .hero-content {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.3em;
+            color: #1a237e;
+        }
+        .hero-content p {
+            font-size: 1.3em;
+            color: #444;
+            margin-bottom: 1.5em;
+        }
+        .cta-button {
+            margin: 0 10px 10px 0;
+        }
+        /* Responsive nav styles */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            nav.sticky-nav ul {
+                display: none;
+                flex-direction: column;
+                background: #1a237e;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                z-index: 1001;
+                padding: 0;
+                margin: 0;
+            }
+            nav.sticky-nav ul.open {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+        }
+        /* Footer improvements */
+        footer {
+            background: #1a237e;
+            color: #fff;
+            text-align: center;
+            padding: 32px 0 16px 0;
+            margin-top: 48px;
+            font-size: 1em;
+            letter-spacing: 1px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    </style>
+    <script>
+        // Loader logic
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+            }, 1200);
+
+            // Responsive nav
+            const navToggle = document.getElementById('navbar-toggle');
+            const navUl = document.querySelector('nav.sticky-nav ul');
+            navToggle.addEventListener('click', function() {
+                navUl.classList.toggle('open');
+            });
+            // Close nav on link click (mobile)
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navUl.classList.remove('open'));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+    <header>
+        <nav class="sticky-nav">
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="public/assets/images/one.jpg" alt="SPARK Institute Hero" class="hero-image">
+            <div class="hero-content">
+                <h1>Welcome to SPARK Institute of Data Science and Applied Statistics</h1>
+                <p>Empowering the next generation of data leaders.<br>
+                Discover world-class programs, innovative research, and a vibrant academic community.</p>
+                <a href="programs.html" class="cta-button">Explore Programs</a>
+                <a href="admissions.html" class="cta-button">Apply Now</a>
+            </div>
+        </section>
+
+        <section class="introduction">
+            <h2>About SPARK Institute</h2>
+            <p>
+                SPARK Institute is a premier institution dedicated to excellence in data science and applied statistics. 
+                Our mission is to foster innovation, critical thinking, and real-world impact through rigorous academics and collaborative research.
+            </p>
+            <ul>
+                <li>Accredited programs at undergraduate, graduate, and certificate levels</li>
+                <li>Expert faculty with global research recognition</li>
+                <li>Modern labs, collaborative spaces, and industry partnerships</li>
+                <li>Active student community and career support</li>
+            </ul>
+        </section>
+
+        <section class="events-carousel">
+            <h2>Upcoming Events</h2>
+            <div class="carousel">
+                <!-- Carousel items will be dynamically generated here -->
+                <div class="carousel-item" style="display:block;">
+                    <h3>Data Science Webinar</h3>
+                    <p>Nov 15, 2023 &mdash; Online</p>
+                    <p>Join us for an insightful webinar on the latest trends in data science.</p>
+                </div>
+                <div class="carousel-item">
+                    <h3>Statistics Conference 2023</h3>
+                    <p>Dec 5, 2023 &mdash; Main Auditorium</p>
+                    <p>Keynote speakers and panel discussions on modern statistics.</p>
+                </div>
+                <div class="carousel-item">
+                    <h3>Machine Learning Workshop</h3>
+                    <p>Jan 10, 2024 &mdash; Room 204</p>
+                    <p>Hands-on workshop focusing on practical applications of machine learning.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <strong>SPARK Institute of Data Science and Applied Statistics</strong><br>
+            123 Data Science Ave, Analytics City, ST 12345<br>
+            Email: info@spark.edu &nbsp;|&nbsp; Phone: (123) 456-7890
+        </div>
+        <div style="margin-top:10px;">
+            &copy; 2023 SPARK Institute of Data Science and Applied Statistics. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

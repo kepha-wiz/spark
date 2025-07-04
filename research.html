@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Shack Institute of Statistics and Data Science</title>
+    <link rel="stylesheet" href="public/css/research.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <style>
+        #loader-bg {
+            position: fixed;
+            z-index: 9999;
+            background: #fff;
+            width: 100vw;
+            height: 100vh;
+            top: 0; left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .spark-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spark-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffb300 0%, #1a237e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            animation: spin 1.4s linear infinite;
+        }
+        .spark-logo span {
+            color: #fff;
+            font-size: 2.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .spark-loader-text {
+            font-size: 1.2em;
+            color: #1a237e;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #1a237e;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                z-index: 1001;
+                padding: 0;
+                margin: 0;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+            }, 1200);
+
+            // Responsive nav
+            const navToggle = document.getElementById('navbar-toggle');
+            const navUl = document.querySelector('nav ul');
+            navToggle.addEventListener('click', function() {
+                navUl.classList.toggle('open');
+            });
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navUl.classList.remove('open'));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="research-overview">
+            <h1>Research at SISDS</h1>
+            <p>At the Shack Institute of Statistics and Data Science, we are committed to advancing knowledge through innovative research in statistics and data science. Our faculty and students engage in a variety of projects that address real-world challenges.</p>
+        </section>
+
+        <section id="ongoing-research">
+            <h2>Ongoing Research Projects</h2>
+            <div class="research-projects">
+                <!-- Research projects will be dynamically populated here -->
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Faculty Publications</h2>
+            <div class="publications-list">
+                <!-- Faculty publications will be dynamically populated here -->
+            </div>
+        </section>
+
+        <section id="labs">
+            <h2>Research Labs</h2>
+            <div class="labs-list">
+                <!-- Research labs will be dynamically populated here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><font color="white">&copy; 2023 Shack Institute of Statistics and Data Science. All rights reserved.</font></p>
+    </footer>
+
+    <script src="js/data-visualization.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

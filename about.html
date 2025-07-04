@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SPARK Institute of Data Science and Applied Statistics</title>
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/about.css">
+    <style>
+        .about-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin: 32px 0;
+        }
+        .about-gallery img {
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(30,34,90,0.10);
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s;
+        }
+        .about-gallery img:hover {
+            transform: scale(1.07) rotate(-2deg);
+            box-shadow: 0 8px 32px rgba(30,34,90,0.18);
+        }
+        .about-hero {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 32px auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 32px rgba(30,34,90,0.13);
+        }
+        .about-hero img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+        #loader-bg {
+            position: fixed;
+            z-index: 9999;
+            background: #fff;
+            width: 100vw;
+            height: 100vh;
+            top: 0; left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .spark-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spark-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffb300 0%, #1a237e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            animation: spin 1.4s linear infinite;
+        }
+        .spark-logo span {
+            color: #fff;
+            font-size: 2.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .spark-loader-text {
+            font-size: 1.2em;
+            color: #1a237e;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(30,34,90,0.07);
+            padding: 32px 24px;
+        }
+        @media (max-width: 900px) {
+            .about-content {
+                padding: 18px 6px;
+            }
+        }
+        /* Responsive nav styles */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #1a237e;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                z-index: 1001;
+                padding: 0;
+                margin: 0;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-hero">
+            <img src="assets/images/one.jpg" alt="SPARK Institute Campus">
+        </div>
+        <div class="about-content">
+            <section id="history">
+                <h1>Our History</h1>
+                <p>
+                    Founded in 2010, SPARK Institute of Data Science and Applied Statistics has grown into a leading center for data-driven education and research. Our alumni are making an impact in academia, industry, and government worldwide.
+                </p>
+            </section>
+
+            <div class="about-gallery">
+                <img src="assets/images/two.jpg" alt="Modern Classrooms">
+                <img src="assets/images/three.jpg" alt="Collaborative Spaces">
+                <img src="assets/images/four.jpg" alt="Research Labs">
+                <img src="assets/images/five.png" alt="Student Activities">
+                <img src="assets/images/six.png" alt="SPARK Institute Logo">
+            </div>
+
+            <section id="vision">
+                <h2>Our Vision</h2>
+                <p>
+                    To be a global leader in data science and applied statistics, inspiring innovation and shaping the future of analytics.
+                </p>
+            </section>
+
+            <section id="values">
+                <h2>Our Values</h2>
+                <ul>
+                    <li>Integrity &amp; Ethics</li>
+                    <li>Academic Excellence</li>
+                    <li>Innovation &amp; Impact</li>
+                    <li>Community Engagement</li>
+                    <li>Diversity &amp; Inclusion</li>
+                </ul>
+            </section>
+
+            <section id="faculty">
+                <h2>Meet Our Faculty</h2>
+                <div class="faculty-list">
+                    <div class="faculty-member">
+                        <img src="assets/images/faculty/jane_smith.jpg" alt="Dr. Jane Smith" style="width:80px;border-radius:50%;">
+                        <h3>Dr. Jane Smith</h3>
+                        <p>Professor of Statistics</p>
+                        <p>Expert in statistical modeling and data analysis.</p>
+                    </div>
+                    <div class="faculty-member">
+                        <img src="assets/images/faculty/john_doe.jpg" alt="Dr. John Doe" style="width:80px;border-radius:50%;">
+                        <h3>Dr. John Doe</h3>
+                        <p>Associate Professor of Data Science</p>
+                        <p>Specialist in machine learning and big data.</p>
+                    </div>
+                    <!-- Add more faculty as needed -->
+                </div>
+            </section>
+
+            <section id="testimonials">
+                <h2>What Our Students Say</h2>
+                <div class="testimonial-list">
+                    <div class="testimonial">
+                        <p>"SPARK Institute gave me the skills and confidence to launch my career in data science."</p>
+                        <cite>- A. Graduate, Class of 2022</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The faculty are supportive and the learning environment is truly world-class."</p>
+                        <cite>- B. Student, MSc Data Science</cite>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <strong>SPARK Institute of Data Science and Applied Statistics</strong><br>
+            123 Data Science Ave, Analytics City, ST 12345<br>
+            Email: info@spark.edu &nbsp;|&nbsp; Phone: (123) 456-7890
+        </div>
+        <div style="margin-top:10px;">
+            &copy; 2023 SPARK Institute of Data Science and Applied Statistics. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Loader logic
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+
+                // Responsive nav
+                const navToggle = document.getElementById('navbar-toggle');
+                const navUl = document.querySelector('nav ul');
+                navToggle.addEventListener('click', function() {
+                    navUl.classList.toggle('open');
+                });
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navUl.classList.remove('open'));
+                });
+            });
+        });
+    </script>
+    <script src="js/lightbox.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
