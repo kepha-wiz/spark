@@ -127,7 +127,7 @@
                 display: block;
             }
         }
-        /* Extra style for mission/vision */
+        /* Mission/Vision styling */
         #vision blockquote {
             font-size:1.15em;
             font-style:italic;
@@ -142,6 +142,31 @@
         }
         #mission li {
             margin-bottom: 7px;
+        }
+        /* Faculty placeholder styling */
+        .faculty-member img {
+            background: #f0f0f0;
+            border: 2px solid #e0e0e0;
+        }
+        /* Inspirational section styling */
+        .inspiration-section {
+            text-align: center;
+            background: #fffde7;
+            padding: 34px 18px 28px 18px;
+            border-radius: 14px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(30,34,90,0.07);
+        }
+        .inspiration-section h1 {
+            color: #1a237e;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .inspiration-section p {
+            font-size: 1.15em;
+            color: #333;
+            margin: 0 auto;
+            max-width: 700px;
         }
     </style>
 </head>
@@ -174,10 +199,10 @@
             <img src="public/assets/images/ONE.jpg" alt="SPARK Institute Campus">
         </div>
         <div class="about-content">
-            <section id="history">
-                <h1>Our History</h1>
+            <section class="inspiration-section">
+                <h1>Discover the Power of Data Science &amp; Applied Statistics</h1>
                 <p>
-                    Founded in 2010, SPARK Institute of Data Science and Applied Statistics has grown into a leading center for data-driven education and research. Our alumni are making an impact in academia, industry, and government worldwide.
+                    Data science and applied statistics are the heartbeats of innovation, illuminating the path from raw information to impactful decisions. In a world overflowing with data, these disciplines empower us to reveal hidden patterns, solve complex problems, and drive progress across every industry. At SPARK Institute, we believe that every dataset holds a story, and every analysis can spark change—fueling discoveries that transform communities, industries, and lives.
                 </p>
             </section>
 
@@ -227,18 +252,25 @@
                 <h2>Meet Our Faculty</h2>
                 <div class="faculty-list">
                     <div class="faculty-member">
-                        <img src="assets/images/faculty/jane_smith.jpg" alt="Dr. Jane Smith" style="width:80px;border-radius:50%;">
+                        <!-- If the image is missing, show a cartoon placeholder automatically -->
+                        <img src="assets/images/faculty/jane_smith.jpg" alt="Dr. Jane Smith" style="width:80px;border-radius:50%;" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';">
                         <h3>Dr. Jane Smith</h3>
                         <p>Professor of Statistics</p>
                         <p>Expert in statistical modeling and data analysis.</p>
                     </div>
                     <div class="faculty-member">
-                        <img src="assets/images/faculty/john_doe.jpg" alt="Dr. John Doe" style="width:80px;border-radius:50%;">
+                        <img src="assets/images/faculty/john_doe.jpg" alt="Dr. John Doe" style="width:80px;border-radius:50%;" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';">
                         <h3>Dr. John Doe</h3>
                         <p>Associate Professor of Data Science</p>
                         <p>Specialist in machine learning and big data.</p>
                     </div>
-                    <!-- Add more faculty as needed -->
+                    <!-- Example with only placeholder -->
+                    <div class="faculty-member">
+                        <img src="public/assets/images/placeholder-cartoon.png" alt="Instructor Placeholder" style="width:80px;border-radius:50%;">
+                        <h3>Dr. Alex Example</h3>
+                        <p>Assistant Professor</p>
+                        <p>Focus: Data visualization and communication.</p>
+                    </div>
                 </div>
             </section>
 
