@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events - SPARK Institute of Statistics and Data Science</title>
+  <link rel="stylesheet" href="public/css/events.css" />
+  <link rel="stylesheet" href="public/css/main.css" />
+  <link rel="stylesheet" href="public/css/modern-theme.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <style>
+    /* Responsive nav styles */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #1a237e;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        z-index: 1001;
+        padding: 0;
+        margin: 0;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo"><span>SI</span></div>
+      <div class="spark-loader-text">SPARK Institute...</div>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo">SPARK</div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="events-header">
+      <h1>Upcoming Events</h1>
+      <p>Join us for our upcoming conferences, webinars, and workshops!</p>
+    </section>
+
+    <section class="event-calendar">
+      <h2>Event Calendar</h2>
+      <div id="calendar"></div>
+    </section>
+
+    <section class="event-list">
+      <h2>All Events</h2>
+      <div id="events-container">
+        <!-- Events will be dynamically loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+      Bugembe Town, Jinja Uganda<br />
+      Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone:
+      +256 755261254
+    </div>
+    <div style="margin-top: 10px;">
+      &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights
+      reserved.
+    </div>
+  </footer>
+
+  <script src="js/events.js"></script>
+  <script>
+    // Loader logic and responsive nav
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('loader-bg').style.opacity = 0;
+        setTimeout(function() {
+          document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+
+        const navToggle = document.getElementById('navbar-toggle');
+        const navUl = document.querySelector('nav ul');
+        navToggle.addEventListener('click', function() {
+          navUl.classList.toggle('open');
+        });
+        navUl.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => navUl.classList.remove('open'));
+        });
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

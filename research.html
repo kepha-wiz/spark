@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research - Spark Institute of Statistics and Data Science</title>
+    <link rel="stylesheet" href="public/css/research.css" />
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/modern-theme.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="research-overview">
+            <h1>Research at SISDS</h1>
+            <p>At the Spark Institute of Statistics and Data Science, we are committed to advancing knowledge through innovative research in statistics and data science. Our faculty and students engage in a variety of projects that address real-world challenges.</p>
+        </section>
+
+        <section id="ongoing-research">
+            <h2>Ongoing Research Projects</h2>
+            <div class="research-projects">
+                <!-- Research projects will be dynamically populated here -->
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Faculty Publications</h2>
+            <div class="publications-list">
+                <!-- Faculty publications will be dynamically populated here -->
+            </div>
+        </section>
+
+        <section id="labs">
+            <h2>Research Labs</h2>
+            <div class="labs-list">
+                <!-- Research labs will be dynamically populated here -->
+            </div>
+        </section>
+    </main>
+
+   <footer>
+    <div>
+      <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+      Bugembe Town, Jinja Uganda<br />
+      Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone:
+      +256 755261254
+    </div>
+    <div style="margin-top: 10px;">
+      &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights
+      reserved.
+    </div>
+  </footer>
+
+    <script src="js/data-visualization.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        // Loader logic and responsive nav
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+
+                const navToggle = document.getElementById('navbar-toggle');
+                const navUl = document.querySelector('nav ul');
+                navToggle.addEventListener('click', function() {
+                    navUl.classList.toggle('open');
+                });
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navUl.classList.remove('open'));
+                });
+            }, 1500);  // Added delay to match loader fade out timing
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admissions - Spark Institute of Statistics and Data Science</title>
+  <link rel="stylesheet" href="public/css/main.css" />
+  <link rel="stylesheet" href="public/css/modern-theme.css" />
+  <link rel="stylesheet" href="public/css/admissions.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <style>
+    /* Responsive nav toggle button */
+    @media (max-width: 900px) {
+      nav.sticky-nav ul {
+        display: none;
+        flex-direction: column;
+        background: #1a237e;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        z-index: 1001;
+        padding: 0;
+        margin: 0;
+      }
+      nav.sticky-nav ul.open {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo"><span>SI</span></div>
+      <div class="spark-loader-text">SPARK Institute...</div>
+    </div>
+  </div>
+
+  <header>
+    <nav class="sticky-nav">
+      <div class="logo">SPARK</div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="admissions.html" class="active">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="admission-process">
+      <h1>Admissions Process</h1>
+      <p>Welcome to the Spark Institute of Statistics and Data Science admissions page. Here you will find all the information you need to apply.</p>
+      <h2>Steps to Apply</h2>
+      <ol>
+        <li>Complete the online application form.</li>
+        <li>Submit required documents (transcripts, letters of recommendation, etc.).</li>
+        <li>Pay the application fee.</li>
+        <li>Schedule an interview (if required).</li>
+        <li>Receive your admission decision.</li>
+      </ol>
+    </section>
+
+    <section id="deadlines">
+      <h2>Application Deadlines</h2>
+      <ul>
+        <li>Fall Semester: June 1</li>
+        <li>Spring Semester: November 1</li>
+        <li>Summer Semester: March 1</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What are the admission requirements?</h3>
+        <p>Applicants must have a bachelor's degree or equivalent and meet specific program prerequisites.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is there an application fee?</h3>
+        <p>Yes, there is a non-refundable application fee of $50.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I apply for financial aid?</h3>
+        <p>Yes, we encourage all students to apply for financial aid. Please visit our financial aid page for more information.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Admissions</h2>
+      <p>If you have any questions, please reach out to our admissions office:</p>
+      <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
+      <p>Phone: +256 755261254</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+      Bugembe Town, Jinja Uganda<br />
+      Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone:
+      +256 755261254
+    </div>
+    <div style="margin-top: 10px;">
+      &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights
+      reserved.
+    </div>
+  </footer>
+
+  <script src="js/form-validation.js"></script>
+  <script>
+    // Loader and responsive nav toggle logic
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () {
+        document.getElementById('loader-bg').style.opacity = 0;
+        setTimeout(function () {
+          document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+
+        const navToggle = document.getElementById('navbar-toggle');
+        const navUl = document.querySelector('nav.sticky-nav ul');
+        navToggle.addEventListener('click', function () {
+          navUl.classList.toggle('open');
+        });
+        navUl.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => navUl.classList.remove('open'));
+        });
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
