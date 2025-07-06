@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Spark Institute of Statistics and Data Science</title>
+    <link rel="stylesheet" href="public/css/programs.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/modern-theme.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="programs-intro">
+            <h1>Our Programs</h1>
+            <p>At the Spark Institute of Statistics and Data Science, we offer specialized programs designed to equip students with the skills and knowledge needed to excel in the fields of statistics and data science.</p>
+        </section>
+
+        <section class="programs-list">
+            <div class="program-card">
+                <span class="coming-soon">Coming Soon</span>
+                <h2>Infectious Disease Modeling</h2>
+                <p>
+                    A cutting-edge course focusing on the statistical and computational modeling of infectious diseases, including epidemic forecasting and intervention strategies.
+                </p>
+            </div><img src="public/assets/images/threes.jpg" alt="Infectious Disease Modeling" class="program-image">
+        </section>
+    </main>
+
+   <footer>
+    <div>
+      <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+      Bugembe Town, Jinja Uganda<br />
+      Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone:
+      +256 755261254
+    </div>
+    <div style="margin-top: 10px;">
+      &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights
+      reserved.
+    </div>
+  </footer>
+
+    <script src="js/tabs.js"></script>
+    <script>
+        // Loader logic and responsive nav
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader-bg').style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+
+                const navToggle = document.getElementById('navbar-toggle');
+                const navUl = document.querySelector('nav ul');
+                navToggle.addEventListener('click', function() {
+                    navUl.classList.toggle('open');
+                });
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navUl.classList.remove('open'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

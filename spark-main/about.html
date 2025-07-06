@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us - SPARK Institute of Data Science and Applied Statistics</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="public/css/about.css" />
+    <link rel="stylesheet" href="public/css/modern-theme.css" />
+</head>
+<body>
+    <div id="loader-bg">
+        <div class="spark-loader">
+            <div class="spark-logo"><span>SI</span></div>
+            <div class="spark-loader-text">SPARK Institute...</div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">SPARK</div>
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-hero">
+            <img src="public/assets/images/ONE.jpg" alt="SPARK Institute Campus" />
+        </div>
+        <div class="about-content">
+            <section class="inspiration-section">
+                <h1>Discover the Power of Data Science &amp; Applied Statistics</h1>
+                <p>
+                    Data science and applied statistics are the heartbeats of innovation, illuminating the path from raw information to impactful decisions. In a world overflowing with data, these disciplines empower us to reveal hidden patterns, solve complex problems, and drive progress across every industry. At SPARK Institute, we believe that every dataset holds a story, and every analysis can spark change—fueling discoveries that transform communities, industries, and lives.
+                </p>
+            </section>
+
+            <div class="about-gallery">
+                <img src="public/assets/images/two.jpg" alt="Modern Classrooms" />
+                <img src="public/assets/images/three.jpg" alt="Collaborative Spaces" />
+                <img src="public/assets/images/four.jpg" alt="Research Labs" />
+                <img src="public/assets/images/five.png" alt="Student Activities" />
+                <img src="public/assets/images/six.png" alt="SPARK Institute Logo" />
+            </div>
+
+            <section id="vision">
+                <h2>Our Vision</h2>
+                <blockquote>
+                    Empowering a data-driven future where insights ignite innovation and transform lives.
+                </blockquote>
+            </section>
+
+            <section id="mission">
+                <h2>Our Mission</h2>
+                <p>At SPARK Institute of Data Science and Applied Statistics, our mission is to:</p>
+                <ul>
+                    <li><strong>Educate and train:</strong> Equip individuals with cutting-edge data science skills.</li>
+                    <li><strong>Innovate and research:</strong> Foster data-driven solutions for real-world problems.</li>
+                    <li><strong>Collaborate and partner:</strong> Build networks with industry, academia, and communities.</li>
+                    <li><strong>Promote data literacy:</strong> Empower diverse stakeholders to harness data's potential.</li>
+                </ul>
+                <p>
+                    Through these efforts, we aim to spark creativity, drive progress, and make a meaningful impact in our community and beyond.
+                </p>
+            </section>
+
+            <section id="values">
+                <h2>Our Values</h2>
+                <ul>
+                    <li>Integrity &amp; Ethics</li>
+                    <li>Academic Excellence</li>
+                    <li>Innovation &amp; Impact</li>
+                    <li>Community Engagement</li>
+                    <li>Diversity &amp; Inclusion</li>
+                </ul>
+            </section>
+
+            <section id="faculty">
+                <h2>Meet Our Faculty</h2>
+                <div class="faculty-list">
+                    <div class="faculty-member">
+                        <img src="public/assets/images/faculty/kirwa_timothy.jpg" alt="KIRWA TIMOTHY" style="width:80px;border-radius:50%;" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
+                        <h3>KIRWA TIMOTHY</h3>
+                        <p>MSc Public Health (MUST)</p>
+                    </div>
+                    <div class="faculty-member">
+                        <img src="public/assets/images/faculty/turyamuhaki_noel.jpg" alt="TURYAMUHAKI NOEL" style="width:80px;border-radius:50%;" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
+                        <h3>TURYAMUHAKI NOEL</h3>
+                        <p>MSc Data Science (MAHE)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonials">
+                <h2>What Our Students Say</h2>
+                <div class="testimonial-list">
+                    <div class="testimonial">
+                        <p>"SPARK Institute gave me the skills and confidence to launch my career in data science."</p>
+                        <cite>- A. Graduate, Class of 2022</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The faculty are supportive and the learning environment is truly world-class."</p>
+                        <cite>- B. Student, MSc Data Science</cite>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+            Bugembe Town, Jinja Uganda<br />
+            Email:<a href="mailto:sparkinstitute2025@outlook.com"> sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone: +256 755261254
+        </div>
+        <div style="margin-top:10px;">
+            &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Loader logic
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                const loader = document.getElementById('loader-bg');
+                loader.style.opacity = 0;
+                setTimeout(function () {
+                    loader.style.display = 'none';
+                }, 700);
+
+                // Responsive nav
+                const navToggle = document.getElementById('navbar-toggle');
+                const navUl = document.querySelector('nav ul');
+                navToggle.addEventListener('click', function () {
+                    navUl.classList.toggle('open');
+                });
+                navUl.querySelectorAll('a').forEach((link) =>
+                    link.addEventListener('click', () => navUl.classList.remove('open'))
+                );
+            }, 1500); // Added delay for loader fade-out
+        });
+    </script>
+    <script src="js/lightbox.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

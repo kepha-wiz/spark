@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog - Spark Institute of Statistics and Data Science</title>
+  <link rel="stylesheet" href="public/css/main.css" />
+  <link rel="stylesheet" href="public/css/modern-theme.css" />
+  <link rel="stylesheet" href="public/css/blog.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <style>
+    /* Responsive nav styles */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #1a237e;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        z-index: 1001;
+        padding: 0;
+        margin: 0;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo"><span>SI</span></div>
+      <div class="spark-loader-text">SPARK Institute...</div>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo">SPARK</div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="blog-header">
+      <h1>Welcome to Our Blog</h1>
+      <p>Stay updated with the latest news, inspirational articles, and facts about data science from the Spark Institute of Statistics and Data Science.</p>
+    </section>
+
+    <section class="blog-posts">
+      <div class="post-preview" id="post1">
+        <h2>Why Data Science is the Sexiest Job of the 21st Century</h2>
+        <p>
+          Data science is transforming industries, driving innovation, and creating new opportunities. Harvard Business Review called it the "sexiest job of the 21st century" because of its impact and demand. Are you ready to be part of the data revolution?
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-preview" id="post2">
+        <h2>Inspiration: How Data Saved Lives During the Pandemic</h2>
+        <p>
+          From tracking outbreaks to optimizing vaccine distribution, data science played a crucial role in the global response to COVID-19. Discover how analytics and modeling helped save millions of lives.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-preview" id="post3">
+        <h2>Fact: 90% of the World’s Data Was Created in the Last Two Years</h2>
+        <p>
+          The digital universe is expanding at an unprecedented rate. This explosion of data means endless opportunities for those with the skills to analyze and interpret it.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-preview" id="post4">
+        <h2>Inspiration: Data Science for Social Good</h2>
+        <p>
+          Data science isn't just about business—it's about making a difference. From fighting poverty to improving healthcare, data-driven insights are helping solve the world’s biggest challenges.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="post-preview" id="post5">
+        <h2>Fact: The Average Data Scientist Salary is Over $100,000</h2>
+        <p>
+          Data science is not only rewarding intellectually, but also financially. The demand for skilled data professionals continues to grow across all sectors.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <!-- Add more inspirational articles and facts as needed -->
+    </section>
+
+    <div class="pagination">
+      <button id="loadMore">Load More</button>
+    </div>
+  </main>
+
+ <footer>
+    <div>
+      <strong>SPARK Institute of Data Science and Applied Statistics</strong><br />
+      Bugembe Town, Jinja Uganda<br />
+      Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a> &nbsp;|&nbsp; Phone:
+      +256 755261254
+    </div>
+    <div style="margin-top: 10px;">
+      &copy; 2025 SPARK Institute of Data Science and Applied Statistics. All rights
+      reserved.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+  <script>
+    // Loader logic and responsive nav
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('loader-bg').style.opacity = 0;
+        setTimeout(function() {
+          document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+
+        const navToggle = document.getElementById('navbar-toggle');
+        const navUl = document.querySelector('nav ul');
+        navToggle.addEventListener('click', function() {
+          navUl.classList.toggle('open');
+        });
+        navUl.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => navUl.classList.remove('open'));
+        });
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
