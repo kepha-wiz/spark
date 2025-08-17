@@ -7,7 +7,6 @@
   <title>Blog - SPARK Institute of Data Science and Applied Statistics</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="logo.png" type="image/png">
-
   <style>
     /* ================================
        Modern Data Science Theme v4.0
@@ -49,7 +48,6 @@
       --shadow-colored: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
     @media (prefers-color-scheme: dark) {
       :root {
         --primary: #f1f5f9;
@@ -69,7 +67,6 @@
         --border-dark: #475569;
       }
     }
-
     *,
     *::before,
     *::after {
@@ -77,7 +74,6 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--background);
@@ -89,14 +85,12 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
     h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 1rem;
       color: var(--primary);
     }
-
     h1 {
       font-size: clamp(2rem, 5vw, 3.5rem);
       background: var(--gradient-2);
@@ -104,13 +98,11 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     h2 {
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       position: relative;
       display: inline-block;
     }
-
     h2::after {
       content: '';
       position: absolute;
@@ -121,21 +113,18 @@
       background: var(--gradient-2);
       border-radius: 2px;
     }
-
     p, ul, ol, li, blockquote {
       font-size: 1.05rem;
       color: var(--text-light);
       margin-bottom: 1.2em;
       max-width: 65ch;
     }
-
     a {
       color: var(--accent);
       text-decoration: none;
       transition: var(--transition);
       position: relative;
     }
-
     a::after {
       content: "";
       position: absolute;
@@ -146,15 +135,12 @@
       background: var(--accent);
       transition: width 0.3s ease;
     }
-
     a:hover::after {
       width: 100%;
     }
-
     a:hover {
       color: var(--accent-dark);
     }
-
     /* Header & Navigation */
     header {
       background: rgba(255, 255, 255, 0.85);
@@ -166,7 +152,6 @@
       z-index: 1000;
       border-bottom: 1px solid var(--border);
     }
-
     nav {
       max-width: 1200px;
       margin: 0 auto;
@@ -176,7 +161,6 @@
       align-items: center;
       height: 64px;
     }
-
     .logo {
       width: 40px;
       height: 40px;
@@ -190,7 +174,6 @@
       font-size: 1.2rem;
       box-shadow: var(--shadow-colored);
     }
-
     .navbar-toggle {
       display: none;
       background: none;
@@ -202,17 +185,14 @@
       border-radius: var(--radius-sm);
       transition: background var(--transition);
     }
-
     .navbar-toggle:hover {
       background: var(--surface-alt);
     }
-
     nav ul {
       display: flex;
       list-style: none;
       gap: 0.25rem;
     }
-
     nav ul li a {
       display: block;
       padding: 0.5rem 0.75rem;
@@ -224,7 +204,6 @@
       position: relative;
       white-space: nowrap;
     }
-
     nav ul li a::before {
       content: '';
       position: absolute;
@@ -237,49 +216,41 @@
       transform: translateX(-50%);
       transition: width 0.3s ease;
     }
-
     nav ul li a:hover::before,
     nav ul li a.active::before {
       width: 70%;
     }
-
     nav ul li a:hover,
     nav ul li a.active {
       color: var(--accent);
       background: rgba(59, 130, 246, 0.1);
     }
-
     /* Main */
     main {
       margin-top: 64px;
       min-height: calc(100vh - 64px);
       padding: 2rem 0;
     }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
-
     .blog-header {
       text-align: center;
       margin-bottom: 3rem;
     }
-
     .blog-header h1 {
       background: var(--gradient-3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .blog-header p {
       color: var(--text-muted);
       max-width: 700px;
       margin: 1rem auto 0;
     }
-
     /* Blog Cards */
     .main-grid {
       display: grid;
@@ -287,7 +258,6 @@
       gap: 24px;
       margin-bottom: 48px;
     }
-
     .blog-post {
       background: var(--surface);
       border-radius: var(--radius);
@@ -295,8 +265,9 @@
       box-shadow: var(--shadow);
       transition: transform var(--transition), box-shadow var(--transition);
       border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
     }
-
     .blog-post::before {
       content: '';
       position: absolute;
@@ -308,21 +279,17 @@
       opacity: 0;
       transition: opacity var(--transition);
     }
-
     .blog-post:hover::before {
       opacity: 1;
     }
-
     .blog-post:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
-
     .blog-post h3 {
       color: var(--secondary);
       margin-bottom: 0.5rem;
     }
-
     .blog-meta {
       font-size: 0.9rem;
       color: var(--text-muted);
@@ -330,7 +297,6 @@
       display: flex;
       gap: 1rem;
     }
-
     .blog-tag {
       background: var(--gradient-2);
       color: white;
@@ -339,7 +305,6 @@
       font-size: 0.85rem;
       display: inline-block;
     }
-
     .btn {
       background: var(--gradient-2);
       color: white;
@@ -354,18 +319,24 @@
       text-decoration: none;
       display: inline-block;
     }
-
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
     }
-
+    .btn-secondary {
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--accent-light);
+      color: var(--primary);
+    }
     /* Pagination */
     .pagination {
       text-align: center;
       margin: 3rem 0;
     }
-
     .btn-load-more {
       background: var(--surface);
       color: var(--accent);
@@ -375,13 +346,64 @@
       border-radius: var(--radius);
       transition: all var(--transition);
     }
-
     .btn-load-more:hover {
       background: var(--accent);
       color: white;
       transform: translateY(-2px);
     }
-
+    /* Full Article View */
+    .article-view {
+      display: none;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+    }
+    .article-header {
+      margin-bottom: 2rem;
+    }
+    .article-title {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+    }
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+    .article-content h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    .article-content ul, .article-content ol {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-content li {
+      margin-bottom: 0.75rem;
+    }
     /* Footer */
     footer {
       background: var(--gradient-4);
@@ -390,7 +412,6 @@
       margin-top: 4rem;
       font-size: 0.95rem;
     }
-
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
@@ -399,19 +420,15 @@
       gap: 2rem;
       text-align: left;
     }
-
     footer h4 {
       color: var(--accent-light);
     }
-
     footer a {
       color: var(--accent-light);
     }
-
     footer a:hover {
       color: var(--accent);
     }
-
     .footer-bottom {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -422,7 +439,6 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     /* Loader */
     #loader-bg {
       position: fixed;
@@ -437,11 +453,9 @@
       z-index: 9999;
       transition: opacity 0.7s ease;
     }
-
     .spark-loader {
       text-align: center;
     }
-
     .spark-logo {
       width: 80px;
       height: 80px;
@@ -456,18 +470,15 @@
       font-weight: bold;
       animation: pulse 1.5s infinite;
     }
-
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-
     .spark-loader-text {
       color: var(--text-inverse);
       font-weight: 600;
     }
-
     /* Responsive */
     @media (max-width: 768px) {
       .navbar-toggle {
@@ -491,9 +502,14 @@
       nav ul.open {
         left: 0;
       }
-
       .blog-header h1 {
         font-size: 2rem;
+      }
+      .article-title {
+        font-size: 1.8rem;
+      }
+      .article-image {
+        height: 200px;
       }
     }
   </style>
@@ -506,7 +522,6 @@
       <div class="spark-loader-text">SPARK Institute...</div>
     </div>
   </div>
-
   <!-- Header -->
   <header>
     <nav>
@@ -526,7 +541,6 @@
       </ul>
     </nav>
   </header>
-
   <!-- Main Content -->
   <main>
     <div class="container">
@@ -534,45 +548,59 @@
         <h1>Insights & Innovations</h1>
         <p>Exploring the frontiers of data science, statistics, and real-world impact at SPARK Institute.</p>
       </section>
-
+      
+      <!-- Blog Listing View -->
       <section class="main-grid" id="blogPosts">
-        <article class="blog-post">
+        <article class="blog-post" data-id="1">
           <div class="blog-meta">
             <span>Oct 10, 2025</span>
             <span class="blog-tag">Insight</span>
           </div>
           <h3>Why Data Science is the Future of Decision-Making</h3>
           <p>Data is no longer just a byproduct of digital systems — it's the foundation of strategy, innovation, and progress. Learn how organizations are shifting from intuition to insight.</p>
-          <a href="#" class="btn">Read Article</a>
+          <a href="#" class="btn read-article">Read Article</a>
         </article>
-
-        <article class="blog-post">
+        <article class="blog-post" data-id="2">
           <div class="blog-meta">
             <span>Sep 28, 2025</span>
             <span class="blog-tag">Research</span>
           </div>
           <h3>How R and Python Are Powering Statistical Discovery</h3>
           <p>From public health to climate modeling, our faculty leverage R and Python to extract meaning from complex datasets. A look into our latest collaborative study.</p>
-          <a href="#" class="btn">Read Article</a>
+          <a href="#" class="btn read-article">Read Article</a>
         </article>
-
-        <article class="blog-post">
+        <article class="blog-post" data-id="3">
           <div class="blog-meta">
             <span>Sep 15, 2025</span>
             <span class="blog-tag">Education</span>
           </div>
           <h3>Teaching Data Literacy in the Age of AI</h3>
           <p>As AI becomes ubiquitous, understanding data is no longer optional. We're integrating data literacy into every level of our curriculum to prepare future-ready graduates.</p>
-          <a href="#" class="btn">Read Article</a>
+          <a href="#" class="btn read-article">Read Article</a>
         </article>
       </section>
-
+      
+      <!-- Full Article View (Hidden by default) -->
+      <section class="article-view" id="articleView">
+        <button class="btn btn-secondary back-to-blog" style="margin-bottom: 1.5rem;">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </button>
+        <div class="article-header">
+          <h1 class="article-title" id="articleTitle"></h1>
+          <div class="article-meta">
+            <span id="articleDate"></span>
+            <span class="blog-tag" id="articleTag"></span>
+          </div>
+        </div>
+        <img src="" alt="" class="article-image" id="articleImage">
+        <div class="article-content" id="articleContent"></div>
+      </section>
+      
       <div class="pagination">
         <button id="loadMore" class="btn-load-more">Load More Articles</button>
       </div>
     </div>
   </main>
-
   <!-- Footer -->
   <footer>
     <div class="footer-content">
@@ -604,15 +632,131 @@
       <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </div>
   </footer>
-
   <!-- Scripts -->
   <script>
+    // Article data with full content
+    const articles = {
+      1: {
+        title: "Why Data Science is the Future of Decision-Making",
+        date: "Oct 10, 2025",
+        tag: "Insight",
+        image: "https://picsum.photos/seed/datascience/1200/600.jpg",
+        content: `
+          <p>In today's rapidly evolving digital landscape, data has become the most valuable asset for organizations across all sectors. The ability to collect, analyze, and interpret data is no longer a luxury but a necessity for sustainable growth and competitive advantage.</p>
+          
+          <h3>The Shift from Intuition to Data-Driven Decisions</h3>
+          <p>For decades, business leaders relied heavily on intuition and experience when making critical decisions. While these elements remain valuable, they are now being augmented by data-driven insights that provide a more objective foundation for strategic planning.</p>
+          
+          <p>At SPARK Institute, we've observed a fundamental shift in how organizations approach decision-making. Companies that embrace data science methodologies consistently outperform their competitors in terms of efficiency, innovation, and customer satisfaction.</p>
+          
+          <h3>Real-World Applications of Data Science</h3>
+          <p>Data science is transforming industries in remarkable ways:</p>
+          <ul>
+            <li><strong>Healthcare:</strong> Predictive models are helping doctors diagnose diseases earlier and with greater accuracy, while machine learning algorithms are accelerating drug discovery processes.</li>
+            <li><strong>Finance:</strong> Banks and financial institutions are using data science to detect fraudulent transactions, assess credit risk, and personalize customer experiences.</li>
+            <li><strong>Retail:</strong> Recommendation engines powered by data science are driving sales by providing personalized shopping experiences, while inventory optimization algorithms are reducing waste and improving availability.</li>
+            <li><strong>Manufacturing:</strong> Predictive maintenance models are minimizing downtime by anticipating equipment failures before they occur, while optimization algorithms are improving supply chain efficiency.</li>
+          </ul>
+          
+          <h3>The Skills Gap and Opportunity</h3>
+          <p>Despite the growing demand for data science expertise, there remains a significant skills gap in the job market. Organizations struggle to find professionals who can effectively translate data into actionable insights.</p>
+          
+          <p>This presents a tremendous opportunity for students and professionals looking to future-proof their careers. By developing strong data science skills, individuals can position themselves at the forefront of innovation in virtually any industry.</p>
+          
+          <h3>Looking Ahead</h3>
+          <p>As we look to the future, the importance of data science will only continue to grow. Emerging technologies like artificial intelligence and the Internet of Things will generate unprecedented amounts of data, creating new possibilities for innovation and discovery.</p>
+          
+          <p>At SPARK Institute, we're committed to preparing the next generation of data scientists who will lead this transformation. Our curriculum combines theoretical foundations with practical applications, ensuring graduates are ready to tackle real-world challenges from day one.</p>
+        `
+      },
+      2: {
+        title: "How R and Python Are Powering Statistical Discovery",
+        date: "Sep 28, 2025",
+        tag: "Research",
+        image: "https://picsum.photos/seed/rpython/1200/600.jpg",
+        content: `
+          <p>In the world of statistical analysis and data science, two programming languages have emerged as the undisputed leaders: R and Python. At SPARK Institute, our research teams leverage both languages to extract meaningful insights from complex datasets across various domains.</p>
+          
+          <h3>The Complementary Strengths of R and Python</h3>
+          <p>While often viewed as competitors, R and Python serve complementary roles in the data science ecosystem. R was specifically designed for statistical analysis and visualization, making it the preferred choice for many statisticians and researchers. Python, with its general-purpose nature and extensive libraries, offers unparalleled flexibility for data manipulation, machine learning, and production deployment.</p>
+          
+          <p>Our recent collaborative study on climate modeling exemplifies how these languages can work together seamlessly. The research team used R for initial exploratory data analysis and statistical modeling, then transitioned to Python for building predictive models and creating interactive visualizations.</p>
+          
+          <h3>Case Study: Public Health Research</h3>
+          <p>In a groundbreaking public health study, our researchers investigated the relationship between environmental factors and respiratory diseases in urban areas. The project began with R, where the team conducted sophisticated time-series analyses and created publication-quality visualizations of disease patterns.</p>
+          
+          <p>As the research progressed, Python's scikit-learn library was employed to develop machine learning models that could predict disease outbreaks based on environmental indicators. The final implementation, which needed to integrate with existing health monitoring systems, was deployed using Python's Django framework.</p>
+          
+          <p>This hybrid approach allowed researchers to leverage the statistical rigor of R while benefiting from Python's versatility in model development and deployment.</p>
+          
+          <h3>Educational Implications</h3>
+          <p>Given the importance of both languages in modern data science, SPARK Institute has redesigned its curriculum to ensure proficiency in both R and Python. Students learn to select the appropriate tool for specific tasks and understand how to integrate workflows across both languages.</p>
+          
+          <p>Our approach emphasizes practical application through real-world projects. In a recent course, students analyzed a massive dataset of global trade patterns, using R for econometric modeling and Python for network analysis to identify trade relationships and predict future trends.</p>
+          
+          <h3>Future Directions</h3>
+          <p>The boundaries between R and Python continue to blur with the development of packages like reticulate (which allows R to run Python code) and rpy2 (which enables Python to access R libraries). These tools are creating new possibilities for integrated analysis workflows.</p>
+          
+          <p>At SPARK Institute, we're actively exploring these hybrid approaches to develop more powerful and flexible analytical methodologies. Our vision is a future where data scientists can seamlessly move between languages, leveraging the unique strengths of each to solve complex problems.</p>
+          
+          <p>As the field continues to evolve, we remain committed to staying at the forefront of these developments, ensuring our students and researchers have access to the most powerful tools and methodologies available.</p>
+        `
+      },
+      3: {
+        title: "Teaching Data Literacy in the Age of AI",
+        date: "Sep 15, 2025",
+        tag: "Education",
+        image: "https://picsum.photos/seed/dataliteracy/1200/600.jpg",
+        content: `
+          <p>As artificial intelligence becomes increasingly integrated into our daily lives and work environments, the ability to understand and interpret data has never been more critical. At SPARK Institute, we recognize that data literacy is no longer a specialized skill but a fundamental competency for all graduates.</p>
+          
+          <h3>The Expanding Definition of Data Literacy</h3>
+          <p>Data literacy encompasses more than just the ability to analyze numbers or create charts. It includes the capacity to:</p>
+          <ul>
+            <li>Identify relevant data sources and evaluate their quality</li>
+            <li>Interpret data visualizations and statistical analyses</li>
+            <li>Recognize potential biases and limitations in data</li>
+            <li>Communicate data-driven insights effectively</li>
+            <li>Ethically use data in decision-making processes</li>
+          </ul>
+          
+          <p>As AI systems become more prevalent, these skills are essential for understanding how algorithms make decisions and for identifying when those decisions might be flawed or biased.</p>
+          
+          <h3>Integrating Data Literacy Across the Curriculum</h3>
+          <p>Our approach to teaching data literacy goes beyond dedicated statistics or data science courses. We've integrated data literacy components into virtually every program of study, ensuring that all graduates develop these critical skills.</p>
+          
+          <p>For example, our business students learn to use data to inform strategic decisions, our social science students develop skills in evaluating research methodologies, and our humanities students explore data visualization techniques for communicating complex ideas.</p>
+          
+          <p>This cross-disciplinary approach ensures that regardless of their field of study, our students graduate with the ability to engage with data confidently and critically.</p>
+          
+          <h3>Practical Applications and Real-World Projects</h3>
+          <p>Theory alone is insufficient for developing true data literacy. Our curriculum emphasizes hands-on experience through real-world projects that challenge students to apply their skills in meaningful contexts.</p>
+          
+          <p>In a recent project, our public health students analyzed local health outcomes data to identify disparities and propose evidence-based interventions. This project required not only technical skills but also an understanding of the social context and ethical considerations surrounding health data.</p>
+          
+          <p>Similarly, our environmental science students have been working with climate data to model local impacts of global warming, developing both technical proficiency and the ability to communicate complex findings to diverse audiences.</p>
+          
+          <h3>Adapting to the AI Revolution</h3>
+          <p>The rise of AI presents both opportunities and challenges for data literacy education. On one hand, AI tools can make data analysis more accessible to non-experts. On the other hand, these same tools can obscure the underlying data processes, potentially leading to misinterpretation or uncritical acceptance of results.</p>
+          
+          <p>Our curriculum addresses this duality by teaching students to use AI tools effectively while understanding their limitations. We emphasize the importance of human judgment in interpreting AI-generated insights and the ethical responsibilities that come with using these powerful technologies.</p>
+          
+          <h3>Preparing Future-Ready Graduates</h3>
+          <p>As we look to the future, the importance of data literacy will only continue to grow. Employers increasingly seek graduates who can navigate data-rich environments and make informed decisions based on evidence.</p>
+          
+          <p>At SPARK Institute, we're committed to ensuring our students are prepared for this data-driven world. By integrating data literacy throughout our curriculum and emphasizing practical, real-world applications, we're developing graduates who are not just technically proficient but also thoughtful, ethical, and effective users of data.</p>
+          
+          <p>In doing so, we're not just preparing students for their first jobs after graduation—we're equipping them with skills that will serve them throughout their careers in an increasingly data-centric world.</p>
+        `
+      }
+    };
+
     // DOM Ready + Loader Fix
     document.addEventListener("DOMContentLoaded", function () {
       const loader = document.getElementById("loader-bg");
-      const navToggle = document.getElementById("navbar-toggle");
+      const navToggle = document.querySelector(".navbar-toggle");
       const navUl = document.querySelector("nav ul");
-
+      
       // Hide loader after delay
       setTimeout(() => {
         if (loader) {
@@ -621,62 +765,222 @@
             loader.style.display = "none";
           }, 700);
         }
-
+        
         // Mobile menu toggle
         if (navToggle && navUl) {
           navToggle.addEventListener("click", () => {
             navUl.classList.toggle("open");
           });
-
           navUl.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", () => {
               navUl.classList.remove("open");
             });
           });
         }
-
+        
+        // Read Article functionality
+        const readArticleButtons = document.querySelectorAll(".read-article");
+        const articleView = document.getElementById("articleView");
+        const blogPosts = document.getElementById("blogPosts");
+        const backToBlogButton = document.querySelector(".back-to-blog");
+        
+        readArticleButtons.forEach(button => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const articleId = button.closest(".blog-post").getAttribute("data-id");
+            const article = articles[articleId];
+            
+            if (article) {
+              // Populate article view
+              document.getElementById("articleTitle").textContent = article.title;
+              document.getElementById("articleDate").textContent = article.date;
+              document.getElementById("articleTag").textContent = article.tag;
+              document.getElementById("articleImage").src = article.image;
+              document.getElementById("articleImage").alt = article.title;
+              document.getElementById("articleContent").innerHTML = article.content;
+              
+              // Show article view and hide blog listing
+              blogPosts.style.display = "none";
+              document.querySelector(".pagination").style.display = "none";
+              articleView.style.display = "block";
+              
+              // Scroll to top of article
+              window.scrollTo({
+                top: articleView.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+        
+        // Back to blog functionality
+        backToBlogButton.addEventListener("click", () => {
+          articleView.style.display = "none";
+          blogPosts.style.display = "grid";
+          document.querySelector(".pagination").style.display = "block";
+          
+          // Scroll to top of blog listing
+          window.scrollTo({
+            top: blogPosts.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        });
+        
         // Load More Articles
         const loadMoreBtn = document.getElementById("loadMore");
-        const blogPosts = document.getElementById("blogPosts");
-
         const newPosts = [
           {
+            id: 4,
             date: "Aug 30, 2025",
             tag: "Innovation",
             title: "TensorFlow in the Classroom: Teaching ML with Real Models",
-            content: "We're using TensorFlow to help students build and deploy real machine learning models — from disease prediction to agricultural forecasting."
+            excerpt: "We're using TensorFlow to help students build and deploy real machine learning models — from disease prediction to agricultural forecasting.",
+            image: "https://picsum.photos/seed/tensorflow/1200/600.jpg",
+            content: `
+              <p>Machine learning has transformed from a niche academic discipline to a mainstream technology with applications across virtually every industry. At SPARK Institute, we've embraced this transformation by integrating TensorFlow, one of the most powerful machine learning frameworks, directly into our curriculum.</p>
+              
+              <h3>Beyond Theory: Practical ML Education</h3>
+              <p>Traditional machine learning education often focuses heavily on theoretical concepts and mathematical foundations. While these elements remain essential, we believe students also need hands-on experience with real tools and real datasets.</p>
+              
+              <p>Our TensorFlow-based curriculum begins with fundamental concepts but quickly progresses to practical applications. Students build their first neural networks within weeks, gradually tackling more complex projects throughout their studies.</p>
+              
+              <h3>Real-World Impact Projects</h3>
+              <p>The highlight of our machine learning program is a capstone project where students address genuine challenges in fields like healthcare, agriculture, and environmental conservation. Recent projects include:</p>
+              
+              <ul>
+                <li>A disease prediction system that analyzes patient data to identify early warning signs of diabetes</li>
+                <li>An agricultural yield optimization tool that helps farmers make planting decisions based on weather patterns and soil conditions</li>
+                <li>A wildlife conservation model that uses camera trap images to track endangered species populations</li>
+              </ul>
+              
+              <p>These projects not only demonstrate technical proficiency but also show students how machine learning can create meaningful impact in the world.</p>
+              
+              <h3>Industry Partnerships</h3>
+              <p>Our TensorFlow curriculum has been developed in close collaboration with industry partners who provide real-world datasets, mentorship, and sometimes even employment opportunities for our students. These partnerships ensure that our curriculum remains relevant to current industry needs and practices.</p>
+              
+              <p>Through these collaborations, students gain exposure to professional workflows and standards, preparing them for seamless transitions into the workplace.</p>
+              
+              <h3>Looking Forward</h3>
+              <p>As machine learning continues to evolve, so too will our curriculum. We're already exploring ways to incorporate emerging techniques like federated learning, transformer models, and reinforcement learning into our teaching.</p>
+              
+              <p>Our goal is not just to teach students how to use TensorFlow today but to provide them with the foundational knowledge and adaptive thinking skills they'll need to work with whatever tools emerge tomorrow.</p>
+            `
           },
           {
+            id: 5,
             date: "Aug 15, 2025",
             tag: "Visualization",
             title: "Why Tableau is Essential for Data Storytelling",
-            content: "Data without context is noise. Tableau helps our students turn complex analytics into compelling narratives for stakeholders."
+            excerpt: "Data without context is noise. Tableau helps our students turn complex analytics into compelling narratives for stakeholders.",
+            image: "https://picsum.photos/seed/tableau/1200/600.jpg",
+            content: `
+              <p>In the modern data landscape, the ability to analyze data is only half the battle. The other half—and often the more challenging part—is communicating insights effectively to decision-makers who may not have technical backgrounds. This is where data visualization and storytelling become essential skills.</p>
+              
+              <h3>The Power of Visual Communication</h3>
+              <p>Human brains are wired to process visual information more efficiently than text or numbers. Well-designed visualizations can reveal patterns, trends, and outliers that might be missed in raw data. More importantly, they can make complex information accessible to a broader audience.</p>
+              
+              <p>At SPARK Institute, we've integrated Tableau, a leading data visualization platform, throughout our curriculum to ensure our students graduate with strong data storytelling capabilities.</p>
+              
+              <h3>From Data to Dashboard</h3>
+              <p>Our Tableau curriculum progresses from basic chart creation to sophisticated interactive dashboards. Students learn not just how to create visually appealing charts but how to design visualizations that effectively communicate specific insights.</p>
+              
+              <p>Key components of our Tableau education include:</p>
+              
+              <ul>
+                <li><strong>Data Connection and Preparation:</strong> Connecting to various data sources and cleaning data for analysis</li>
+                <li><strong>Visual Best Practices:</strong> Choosing appropriate chart types and designing for clarity and impact</li>
+                <li><strong>Dashboard Design:</strong> Creating cohesive, interactive dashboards that tell a complete story</li>
+                <li><strong>Advanced Analytics:</strong> Incorporating statistical analysis and predictive modeling into visualizations</li>
+              </ul>
+              
+              <h3>Real-World Applications</h3>
+              <p>The true test of data visualization skills comes in real-world applications. Our students work on projects with actual organizations to create dashboards and reports that drive decision-making.</p>
+              
+              <p>In a recent collaboration with a local healthcare provider, our students developed a dashboard that visualized patient flow, resource utilization, and treatment outcomes. The dashboard helped hospital administrators identify bottlenecks in their processes and make data-driven decisions that improved patient care while reducing operational costs.</p>
+              
+              <p>Another project with an environmental nonprofit created visualizations of air quality data that effectively communicated the impact of industrial pollution on local communities. These visualizations were instrumental in advocacy efforts that led to new environmental regulations.</p>
+              
+              <h3>Beyond Technical Skills</h3>
+              <p>While technical proficiency with Tableau is important, our curriculum emphasizes the broader skills of data storytelling:</p>
+              
+              <ul>
+                <li><strong>Audience Analysis:</strong> Understanding who will consume the visualizations and tailoring the presentation to their needs</li>
+                <li><strong>Narrative Development:</strong> Structuring data insights into a coherent story with a clear beginning, middle, and end</li>
+                <li><strong>Ethical Representation:</strong> Ensuring visualizations accurately represent the data without misleading or manipulating the audience</li>
+              </ul>
+              
+              <h3>The Future of Data Visualization</h3>
+              <p>As data continues to grow in volume and complexity, the importance of effective visualization will only increase. Emerging technologies like augmented reality and virtual reality are creating new possibilities for immersive data experiences.</p>
+              
+              <p>At SPARK Institute, we're exploring these frontiers while ensuring our students have a strong foundation in established visualization principles and tools. Our goal is to prepare graduates who can not only work with today's technologies but adapt to whatever the future holds for data communication.</p>
+            `
           }
         ];
-
+        
         loadMoreBtn.addEventListener("click", () => {
           newPosts.forEach(post => {
             const article = document.createElement("article");
             article.className = "blog-post";
+            article.setAttribute("data-id", post.id);
             article.innerHTML = `
               <div class="blog-meta">
                 <span>${post.date}</span>
                 <span class="blog-tag">${post.tag}</span>
               </div>
               <h3>${post.title}</h3>
-              <p>${post.content}</p>
-              <a href="#" class="btn">Read Article</a>
+              <p>${post.excerpt}</p>
+              <a href="#" class="btn read-article">Read Article</a>
             `;
             blogPosts.appendChild(article);
+            
+            // Add the new article to the articles object
+            articles[post.id] = {
+              title: post.title,
+              date: post.date,
+              tag: post.tag,
+              image: post.image,
+              content: post.content
+            };
           });
+          
+          // Add event listeners to new read article buttons
+          const newReadButtons = document.querySelectorAll(".read-article");
+          newReadButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+              e.preventDefault();
+              const articleId = button.closest(".blog-post").getAttribute("data-id");
+              const article = articles[articleId];
+              
+              if (article) {
+                // Populate article view
+                document.getElementById("articleTitle").textContent = article.title;
+                document.getElementById("articleDate").textContent = article.date;
+                document.getElementById("articleTag").textContent = article.tag;
+                document.getElementById("articleImage").src = article.image;
+                document.getElementById("articleImage").alt = article.title;
+                document.getElementById("articleContent").innerHTML = article.content;
+                
+                // Show article view and hide blog listing
+                blogPosts.style.display = "none";
+                document.querySelector(".pagination").style.display = "none";
+                articleView.style.display = "block";
+                
+                // Scroll to top of article
+                window.scrollTo({
+                  top: articleView.offsetTop - 80,
+                  behavior: 'smooth'
+                });
+              }
+            });
+          });
+          
           loadMoreBtn.disabled = true;
           loadMoreBtn.textContent = "No more articles";
           loadMoreBtn.style.opacity = "0.6";
         });
-
       }, 1200);
     });
-
+    
     // Failsafe loader hide
     setTimeout(() => {
       const loader = document.getElementById("loader-bg");
