@@ -1,1068 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Us - SPARK Institute of Data Science and Applied Statistics</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.png" type="image/png" />
-    <style>
-        /* ================================
-           Modern Data Science Theme v4.0
-           ================================ */
-        :root {
-            /* Modern Data Science Color Palette */
-            --primary: #0f172a;        /* Deep navy blue - primary */
-            --primary-light: #1e293b;  /* Lighter navy blue */
-            --secondary: #1e3a8a;      /* Deep blue for accents */
-            --accent: #3b82f6;        /* Bright blue for CTAs */
-            --accent-light: #60a5fa;  /* Lighter blue */
-            --accent-dark: #1d4ed8;   /* Darker blue */
-            --purple: #8b5cf6;        /* Purple for highlights */
-            --purple-dark: #7c3aed;   /* Darker purple */
-            --teal: #14b8a6;          /* Teal for data elements */
-            --teal-dark: #0d9488;     /* Darker teal */
-            --cyan: #06b6d4;          /* Cyan for tech elements */
-            --pink: #ec4899;          /* Pink for highlights */
-            --background: #f1f5f9;    /* Light gray-blue background */
-            --surface: #ffffff;       /* White surface */
-            --surface-alt: #e2e8f0;   /* Light gray alternative surface */
-            --surface-dark: #334155;  /* Dark surface */
-            --text: #0f172a;          /* Dark text */
-            --text-light: #64748b;    /* Light text */
-            --text-muted: #94a3b8;    /* Muted text */
-            --text-inverse: #ffffff;  /* White text for dark backgrounds */
-            --border: #e2e8f0;        /* Light border */
-            --border-dark: #64748b;   /* Dark border */
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            --gradient-3: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
-            --gradient-4: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            --gradient-5: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            --radius: 12px;           /* Border radius */
-            --radius-sm: 8px;         /* Small border radius */
-            --radius-lg: 16px;        /* Large border radius */
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-colored: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary: #f1f5f9;
-                --primary-light: #e2e8f0;
-                --secondary: #93c5fd;
-                --accent: #60a5fa;
-                --accent-light: #3b82f6;
-                --accent-dark: #93c5fd;
-                --background: #0f172a;
-                --surface: #1e293b;
-                --surface-alt: #334155;
-                --surface-dark: #475569;
-                --text: #f1f5f9;
-                --text-light: #cbd5e1;
-                --text-muted: #94a3b8;
-                --border: #334155;
-                --border-dark: #475569;
-            }
-        }
-        
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--background);
-            background-image: 
-                radial-gradient(at 10% 20%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
-            color: var(--text);
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        h1 { 
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        h2 { 
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient-2);
-            border-radius: 2px;
-        }
-        
-        h3 { 
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--secondary);
-        }
-        
-        h4 { font-size: 1.25rem; }
-        h5 { font-size: 1.1rem; font-weight: 600; }
-        h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        p, ul, ol, li, blockquote {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 1.2em;
-            max-width: 65ch;
-        }
-        
-        /* Links */
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        a::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        a:hover::after {
-            width: 100%;
-        }
-        
-        a:hover {
-            color: var(--accent-dark);
-        }
-        
-        a.icon-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-md);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 64px;
-        }
-        
-        .logo {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-colored);
-        }
-        
-        .navbar-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: var(--radius-sm);
-            transition: background var(--transition);
-        }
-        
-        .navbar-toggle:hover {
-            background: var(--surface-alt);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0.25rem;
-            flex-wrap: nowrap;
-        }
-        
-        nav ul li a {
-            display: block;
-            padding: 0.5rem 0.75rem;
-            border-radius: var(--radius);
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            position: relative;
-            white-space: nowrap;
-        }
-        
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px;
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-        }
-        
-        nav ul li a:hover::before,
-        nav ul li a.active::before {
-            width: 70%;
-        }
-        
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
-        /* Main Content */
-        main {
-            margin-top: 64px;
-            min-height: calc(100vh - 64px);
-        }
-        
-        /* About Hero Section */
-        .about-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 400px;
-            overflow: hidden;
-            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-        }
-        
-        .about-hero img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-        
-        .about-hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4));
-            z-index: 2;
-        }
-        
-        .about-hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 3;
-            color: var(--text-inverse);
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-        
-        .about-hero-content h1 {
-            color: var(--text-inverse);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ffffff, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .about-hero-content p {
-            color: var(--text-inverse);
-            font-size: 1.2rem;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-        
-        /* About Content */
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-        
-        .inspiration-section {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-        
-        .inspiration-section h1 {
-            margin-bottom: 2rem;
-        }
-        
-        /* Gallery Section */
-        .about-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-        
-        .about-gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
-        
-        .about-gallery img:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Sections */
-        section {
-            margin-bottom: 4rem;
-        }
-        
-        /* Vision, Mission, Values Sections */
-        .vision-mission-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .vmv-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), box-shadow var(--transition);
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-        }
-        
-        .vmv-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-2);
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-        
-        .vmv-card:hover::before {
-            opacity: 1;
-        }
-        
-        .vmv-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .vmv-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-colored);
-        }
-        
-        .vmv-card h2 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .vmv-card blockquote {
-            background: var(--gradient-4);
-            color: var(--text-inverse);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            margin: 1rem 0;
-            position: relative;
-            font-style: italic;
-            font-size: 1.1rem;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .vmv-card blockquote::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .vmv-card blockquote::after {
-            content: '"';
-            position: absolute;
-            bottom: -50px;
-            right: 20px;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .vmv-card ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .vmv-card ul li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(59, 130, 246, 0.05);
-            border-radius: var(--radius);
-            transition: background var(--transition);
-        }
-        
-        .vmv-card ul li:hover {
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
-        .vmv-card ul li i {
-            color: var(--accent);
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
-        
-        .vmv-card ul li strong {
-            color: var(--secondary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .value-item {
-            background: rgba(139, 92, 246, 0.05);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            text-align: center;
-            transition: transform var(--transition), background var(--transition);
-        }
-        
-        .value-item:hover {
-            transform: translateY(-5px);
-            background: rgba(139, 92, 246, 0.1);
-        }
-        
-        .value-item i {
-            font-size: 2.5rem;
-            background: var(--gradient-5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-        
-        .value-item h3 {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Faculty Section */
-        .faculty-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .faculty-member {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), box-shadow var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .faculty-member:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .faculty-member img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 4px solid var(--surface-alt);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .faculty-member h3 {
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .faculty-member p:first-of-type {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        /* Testimonials Section */
-        .testimonial-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), box-shadow var(--transition);
-            position: relative;
-        }
-        
-        .testimonial:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .testimonial::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            color: rgba(59, 130, 246, 0.2);
-        }
-        
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial cite {
-            display: block;
-            text-align: right;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--gradient-4);
-            color: var(--text-inverse);
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            font-size: 0.95rem;
-            border-radius: var(--radius) var(--radius) 0 0;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: left;
-        }
-        
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        footer h4 {
-            color: var(--accent-light);
-            margin-bottom: 1rem;
-        }
-        
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        footer ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        footer a {
-            color: var(--accent-light);
-        }
-        
-        footer a:hover {
-            color: var(--accent);
-        }
-        
-        /* Loader */
-        #loader-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.7s ease;
-        }
-        
-        .spark-loader {
-            text-align: center;
-        }
-        
-        .spark-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .spark-loader-text {
-            color: var(--text-inverse);
-            font-weight: 600;
-        }
-        
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar-toggle {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 64px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 64px);
-                background: var(--surface);
-                flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s ease;
-                box-shadow: var(--shadow-lg);
-                gap: 0.5rem;
-            }
-            
-            nav ul.open {
-                left: 0;
-            }
-            
-            nav ul li a {
-                padding: 0.75rem 1rem;
-                font-size: 1rem;
-                text-align: center;
-            }
-            
-            .about-hero {
-                height: 50vh;
-                min-height: 300px;
-            }
-            
-            .about-hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .about-hero-content p {
-                font-size: 1rem;
-            }
-            
-            .vision-mission-values {
-                grid-template-columns: 1fr;
-            }
-            
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .about-gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .faculty-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonial-list {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - SPARK Institute of Data Science and Applied Statistics</title>
+  <meta name="description" content="Learn about SPARK Institute's mission, vision, faculty, and commitment to excellence in data science and applied statistics education.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dark: #1d4ed8;
+      --purple: #8b5cf6;
+      --teal: #14b8a6;
+      --pink: #ec4899;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --gradient-alt: linear-gradient(135deg, #14b8a6, #3b82f6);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --radius: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #f1f5f9;
+        --primary-light: #e2e8f0;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-alt: #334155;
+        --text: #f1f5f9;
+        --text-light: #cbd5e1;
+        --border: #334155;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    p, ul, li {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Header */
+    header {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.9);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: #334155;
+      }
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    nav ul li a.active {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .about-hero {
+      height: 60vh;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .about-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+      z-index: 2;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .about-hero-content h1 {
+      color: white;
+      background: linear-gradient(to right, #ffffff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-hero-content p {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      max-width: 700px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    /* Gallery */
+    .about-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin: 3rem 0;
+    }
+
+    .about-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .about-gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Faculty */
+    .faculty-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .faculty-member {
+      text-align: center;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .faculty-member:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .faculty-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-light);
+      margin-bottom: 1rem;
+    }
+
+    .faculty-member h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .faculty-member p.role {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    /* Testimonials */
+    .testimonial-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      border-left: 4px solid var(--accent);
+      font-style: italic;
+    }
+
+    .testimonial::before {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(59, 130, 246, 0.1);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .testimonial cite {
+      display: block;
+      text-align: right;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 1rem;
+    }
+
+    /* Technologies Section */
+    .tech-section {
+      background: var(--surface-alt);
+      padding: 4rem 1.5rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tech-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .tech-card h3 i {
+      font-size: 1.8rem;
+    }
+
+    .tech-card p {
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent-light);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-toggle { display: block; }
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+      }
+      nav ul.open { left: 0; }
+      .about-hero { height: 50vh; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <div id="loader-bg">
-        <div class="spark-loader">
-            <div class="spark-logo"><span>SI</span></div>
-            <div class="spark-loader-text">SPARK Institute...</div>
-        </div>
+
+  <!-- Loader -->
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo">SI</div>
+      <div class="spark-loader-text">SPARK Institute...</div>
     </div>
-    <header>
-        <nav>
-            <div class="logo">SI</div>
-            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
-                <li><a href="programs.html">Programs</a></li>
-                <li><a href="admissions.html">Admissions</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="about-hero">
-            <img src="public/assets/images/ONE.jpg" alt="SPARK Institute Campus" />
-            <div class="about-hero-content">
-                <h1>About SPARK Institute</h1>
-                <p>Empowering the next generation of data leaders through world-class education and research</p>
-            </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="logo.png" alt="SPARK Institute Logo" />
+        <span>SPARK Institute</span>
+      </div>
+      <button class="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <img src="public/assets/images/ONE.jpg" alt="SPARK Institute Campus" />
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content">
+      <h1>About SPARK Institute</h1>
+      <p>Empowering the next generation of data leaders through world-class education and research</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <h2>Our Vision & Mission</h2>
+      <div class="main-grid">
+        <div class="card">
+          <h3><i class="fas fa-lightbulb"></i> Our Vision</h3>
+          <p>To be a globally recognized leader in data science and applied statistics education, driving innovation and transforming lives through data-driven decision-making.</p>
+          <p>We envision a future where data literacy empowers individuals and institutions across Africa and beyond to solve real-world challenges with intelligence, ethics, and impact.</p>
         </div>
-        <div class="about-content">
-            <section class="inspiration-section fade-in">
-                <h1>Discover the Power of Data Science &amp; Applied Statistics</h1>
-                <p>
-                    Data science and applied statistics are the heartbeats of innovation, illuminating the path from raw information to impactful decisions. In a world overflowing with data, these disciplines empower us to reveal hidden patterns, solve complex problems, and drive progress across every industry. At SPARK Institute, we believe that every dataset holds a story, and every analysis can spark change—fueling discoveries that transform communities, industries, and lives.
-                </p>
-            </section>
-            
-            <div class="about-gallery fade-in">
-                <img src="public/assets/images/two.jpg" alt="Modern Classrooms" />
-                <img src="public/assets/images/three.jpg" alt="Collaborative Spaces" />
-                <img src="public/assets/images/four.jpg" alt="Research Labs" />
-                <img src="public/assets/images/five.png" alt="Student Activities" />
-                <img src="public/assets/images/six.png" alt="SPARK Institute Logo" />
-            </div>
-            
-            <div class="vision-mission-values fade-in">
-                <div class="vmv-card">
-                    <div class="vmv-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h2>Our Vision</h2>
-                    <blockquote>
-                        Empowering a data-driven future where insights ignite innovation and transform lives.
-                    </blockquote>
-                </div>
-                
-                <div class="vmv-card">
-                    <div class="vmv-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h2>Our Mission</h2>
-                    <p>At SPARK Institute of Data Science and Applied Statistics, our mission is to:</p>
-                    <ul>
-                        <li>
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <strong>Educate and train</strong>
-                                Equip individuals with cutting-edge data science skills through rigorous academic programs and hands-on learning experiences.
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-flask"></i>
-                            <div>
-                                <strong>Innovate and research</strong>
-                                Foster groundbreaking research that addresses real-world challenges and pushes the boundaries of data science and statistics.
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-handshake"></i>
-                            <div>
-                                <strong>Collaborate and partner</strong>
-                                Build strong networks with industry leaders, academic institutions, and communities to maximize impact and create opportunities.
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-chart-line"></i>
-                            <div>
-                                <strong>Promote data literacy</strong>
-                                Empower diverse stakeholders with the knowledge and tools to harness data's potential for informed decision-making.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="vmv-card">
-                    <div class="vmv-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h2>Our Values</h2>
-                    <div class="values-grid">
-                        <div class="value-item">
-                            <i class="fas fa-balance-scale"></i>
-                            <h3>Integrity &amp; Ethics</h3>
-                        </div>
-                        <div class="value-item">
-                            <i class="fas fa-award"></i>
-                            <h3>Academic Excellence</h3>
-                        </div>
-                        <div class="value-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <h3>Innovation &amp; Impact</h3>
-                        </div>
-                        <div class="value-item">
-                            <i class="fas fa-users"></i>
-                            <h3>Community Engagement</h3>
-                        </div>
-                        <div class="value-item">
-                            <i class="fas fa-globe"></i>
-                            <h3>Diversity &amp; Inclusion</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <section id="faculty" class="fade-in">
-                <h2 class="text-center">Meet Our Faculty</h2>
-                <div class="faculty-list">
-                    <div class="faculty-member">
-                        <img src="public/assets/images/img2.jpeg" alt="KIRWA TIMOTHY" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
-                        <h3>KIRWA TIMOTHY</h3>
-                        <p>MSc Public Health (MUST)</p>
-                        <p>Kirwa Timothy is a dedicated public health professional with a Master's degree in Public Health from MUST. His research interests and expertise lie in Public health and data. He is committed to improving health outcomes through evidence-based practices.</p>
-                    </div>
-                    <div class="faculty-member">
-                        <img src="public/assets/images/img1.jpg" alt="TURYAMUHAKI NOEL" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
-                        <h3>TURYAMUHAKI NOEL</h3>
-                        <p>MSc Data Science (MAHE)</p>
-                        <p>Turyamuhaki Noel is a data science expert with a Master's degree in Data Science from Manipal Academy Of Higher Education(MAHE). His research focuses on infectious disease modeling, climate change forecasting, uncertainity quantification in machine learning and statistical modeling. He is passionate about harnessing the power of data to drive informed decision-making.</p>
-                    </div>
-                    <div class="faculty-member">
-                        <img src="public/assets/images/img.jpeg" alt="JUMBAFAHAD" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
-                        <h3>JUMBA FAHAD</h3>
-                        <p>MSc Data Science (MAHE)</p>
-                        <p>Jumba Fahad holds a Master's degree in Data Science from Manipal Academy Of Higher Education(MAHE). His expertise lies in analyzing data patterns and trends so as to identify problems and come up with solutions, and he is dedicated to applying data-driven approaches to solve real-world problems.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="testimonials" class="fade-in">
-                <h2 class="text-center">What Our Students Say</h2>
-                <div class="testimonial-list">
-                    <div class="testimonial">
-                        <p>"SPARK Institute gave me the skills and confidence to launch my career in data science. The faculty are incredibly supportive and the curriculum is perfectly balanced between theory and practical application."</p>
-                        <cite>- A. Graduate, Class of 2022</cite>
-                    </div>
-                    <div class="testimonial">
-                        <p>"The learning environment at SPARK is truly world-class. The modern facilities and collaborative spaces make it easy to immerse yourself in your studies and connect with fellow students who share your passion for data."</p>
-                        <cite>- B. Student, MSc Data Science</cite>
-                    </div>
-                </div>
-            </section>
+        <div class="card">
+          <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+          <p>We are committed to excellence in education, research, and community engagement. Our mission is to:</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--teal); margin-top: 0.2rem;"></i>
+              <span>Educate and train the next generation of data scientists with cutting-edge skills.</span>
+            </li>
+            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+              <i class="fas fa-flask" style="color: var(--teal); margin-top: 0.2rem;"></i>
+              <span>Conduct impactful research that addresses regional and global challenges.</span>
+            </li>
+            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+              <i class="fas fa-chart-line" style="color: var(--teal); margin-top: 0.2rem;"></i>
+              <span>Promote data literacy and democratize access to data science tools.</span>
+            </li>
+            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+              <i class="fas fa-handshake" style="color: var(--teal); margin-top: 0.2rem;"></i>
+              <span>Foster collaboration between academia, industry, and government.</span>
+            </li>
+          </ul>
         </div>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <div>
-                <h4>SPARK Institute</h4>
-                <p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
-                <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
-                <p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="programs.html">Programs</a></li>
-                    <li><a href="admissions.html">Admissions</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Academic</h4>
-                <ul>
-                    <li><a href="programs.html">Undergraduate Programs</a></li>
-                    <li><a href="programs.html">Graduate Programs</a></li>
-                    <li><a href="programs.html">Certificate Programs</a></li>
-                    <li><a href="research.html">Research Areas</a></li>
-                    <li><a href="faculty.html">Faculty Directory</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Connect With Us</h4>
-                <p>
-                    <a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-facebook"></i> Facebook</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-instagram"></i> Instagram</a>
-                </p>
-            </div>
+      </div>
+
+      <h2 class="text-center" style="margin-top: 3rem;">Campus Life</h2>
+      <div class="about-gallery">
+        <img src="public/assets/images/two.jpg" alt="Modern Classrooms" />
+        <img src="public/assets/images/three.png" alt="Collaborative Spaces" />
+        <img src="public/assets/images/four.jpg" alt="Research Labs" />
+        <img src="public/assets/images/five.png" alt="Student Activities" />
+        <img src="public/assets/images/six.png" alt="Innovation Hub" />
+      </div>
+
+      <h2>Meet Our Faculty</h2>
+      <div class="faculty-list">
+        <div class="faculty-member">
+          <img src="public/assets/images/img2.jpeg" alt="KIRWA TIMOTHY" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
+          <h3>KIRWA TIMOTHY</h3>
+          <p class="role">MSc Public Health (MUST)</p>
+          <p>Kirwa Timothy is a dedicated public health professional with a Master's degree in Public Health from Mbarara University of Science and Technology (MUST). His research interests lie at the intersection of public health and data science, focusing on disease surveillance, health outcomes analysis, and evidence-based interventions. He is committed to improving community health through data-driven decision-making and capacity building.</p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+        <div class="faculty-member">
+          <img src="public/assets/images/img1.jpg" alt="TURYAMUHAKI NOEL" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
+          <h3>TURYAMUHAKI NOEL</h3>
+          <p class="role">MSc Data Science (MAHE)</p>
+          <p>Turyamuhaki Noel is a data science expert with a Master's degree in Data Science from Manipal Academy of Higher Education (MAHE). His research focuses on infectious disease modeling, climate change forecasting, uncertainty quantification in machine learning, and statistical modeling. He is passionate about harnessing the power of data to predict and mitigate public health and environmental risks, contributing to sustainable development.</p>
         </div>
-    </footer>
-    <script>
-        // Loader logic
-        window.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                const loader = document.getElementById('loader-bg');
-                loader.style.opacity = 0;
-                setTimeout(function () {
-                    loader.style.display = 'none';
-                }, 700);
-                
-                // Responsive nav
-                const navToggle = document.getElementById('navbar-toggle');
-                const navUl = document.querySelector('nav ul');
-                navToggle.addEventListener('click', function () {
-                    navUl.classList.toggle('open');
-                });
-                navUl.querySelectorAll('a').forEach((link) =>
-                    link.addEventListener('click', () => navUl.classList.remove('open'))
-                );
-            }, 1200); // Added delay for loader fade-out
-        });
-        
-        // Add fade-in animation to elements
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('section, .about-gallery, .vision-mission-values').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+        <div class="faculty-member">
+          <img src="public/assets/images/img.jpeg" alt="JUMBA FAHAD" onerror="this.onerror=null;this.src='public/assets/images/placeholder-cartoon.png';" />
+          <h3>JUMBA FAHAD</h3>
+          <p class="role">MSc Data Science (MAHE)</p>
+          <p>Jumba Fahad holds a Master's degree in Data Science from Manipal Academy of Higher Education (MAHE). His expertise lies in analyzing data patterns and trends to identify problems and develop data-driven solutions. He is dedicated to applying machine learning and statistical techniques to real-world challenges in business, healthcare, and social systems, with a strong emphasis on ethical AI and reproducible research.</p>
+        </div>
+      </div>
+
+      <h2>What Our Students Say</h2>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <p>"SPARK Institute gave me the skills and confidence to launch my career in data science. The faculty are incredibly supportive and the curriculum is perfectly balanced between theory and practical application."</p>
+          <cite>- A. Graduate, Class of 2022</cite>
+        </div>
+        <div class="testimonial">
+          <p>"The learning environment at SPARK is truly world-class. The modern facilities and collaborative spaces make it easy to immerse yourself in your studies and connect with fellow students who share your passion for data."</p>
+          <cite>- B. Student, MSc Data Science</cite>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technologies We Use -->
+    <section class="tech-section">
+      <div class="container">
+        <h2 class="text-center">Technologies We Teach</h2>
+        <p class="text-center">We integrate industry-leading tools and platforms to deliver a cutting-edge data science education.</p>
+        <div class="tech-grid">
+          <!-- Python -->
+          <div class="tech-card">
+            <h3><i class="fab fa-python" style="color: #3776AB;"></i> Python</h3>
+            <p>Whether you're new to programming or an experienced developer, it's easy to learn and use Python. It compiles and runs on a wide variety of platforms and is the most popular language in data science and machine learning.</p>
+            <a href="https://www.python.org" target="_blank" class="btn">Learn More</a>
+          </div>
+
+          <!-- R -->
+          <div class="tech-card">
+            <h3><i class="fab fa-r-project" style="color: #276498;"></i> R</h3>
+            <p>R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS, making it ideal for academic and industry research.</p>
+            <a href="https://www.r-project.org" target="_blank" class="btn">Learn More</a>
+          </div>
+
+          <!-- MySQL -->
+          <div class="tech-card">
+            <h3><i class="fas fa-database" style="color: #F29111;"></i> MySQL</h3>
+            <p>Use automated and integrated generative AI and machine learning (ML) in one cloud service for transactions and lakehouse scale analytics. Get faster insights from all your data with unmatched performance.</p>
+            <a href="https://www.mysql.com" target="_blank" class="btn">Learn More</a>
+          </div>
+
+          <!-- TensorFlow -->
+          <div class="tech-card">
+            <h3><i class="fab fa-tensorflow" style="color: #FF6F00;"></i> TensorFlow</h3>
+            <p>An end-to-end open-source platform for machine learning. Whether you're new to programming or an experienced developer, it's easy to learn and use TensorFlow for building and deploying ML models at scale.</p>
+            <a href="https://www.tensorflow.org" target="_blank" class="btn">Learn More</a>
+          </div>
+
+          <!-- Tableau -->
+          <div class="tech-card">
+            <h3><i class="fas fa-chart-line" style="color: #2F4F74;"></i> Tableau</h3>
+            <p>Fuel faster data, insights, and action with Tableau Next. Turn trusted insights into autonomous action anytime, anywhere, with the world's first agentic analytics platform.</p>
+            <a href="https://www.tableau.com" target="_blank" class="btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>SPARK Institute</h4>
+        <p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
+        <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
+        <p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="programs.html">Undergraduate Programs</a></li>
+          <li><a href="programs.html">Graduate Programs</a></li>
+          <li><a href="programs.html">Certificate Programs</a></li>
+          <li><a href="research.html">Research Areas</a></li>
+          <li><a href="faculty.html">Faculty Directory</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect With Us</h4>
+        <p>
+          <a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-facebook"></i> Facebook</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-instagram"></i> Instagram</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menu Toggle
+    const toggle = document.querySelector('.navbar-toggle');
+    const menu = document.querySelector('nav ul');
+    toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Close menu on link click
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+
+    // Loader
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader-bg');
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
