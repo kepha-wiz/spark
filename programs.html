@@ -1,986 +1,914 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programs - SPARK Institute of Data Science and Applied Statistics</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.png" type="image/png">
-    <style>
-        /* ================================
-           Modern Data Science Theme v4.0
-           ================================ */
-        :root {
-            /* Modern Data Science Color Palette */
-            --primary: #0f172a;        /* Deep navy blue - primary */
-            --primary-light: #1e293b;  /* Lighter navy blue */
-            --secondary: #1e3a8a;      /* Deep blue for accents */
-            --accent: #3b82f6;        /* Bright blue for CTAs */
-            --accent-light: #60a5fa;  /* Lighter blue */
-            --accent-dark: #1d4ed8;   /* Darker blue */
-            --purple: #8b5cf6;        /* Purple for highlights */
-            --purple-dark: #7c3aed;   /* Darker purple */
-            --teal: #14b8a6;          /* Teal for data elements */
-            --teal-dark: #0d9488;     /* Darker teal */
-            --cyan: #06b6d4;          /* Cyan for tech elements */
-            --pink: #ec4899;          /* Pink for highlights */
-            --background: #f1f5f9;    /* Light gray-blue background */
-            --surface: #ffffff;       /* White surface */
-            --surface-alt: #e2e8f0;   /* Light gray alternative surface */
-            --surface-dark: #334155;  /* Dark surface */
-            --text: #0f172a;          /* Dark text */
-            --text-light: #64748b;    /* Light text */
-            --text-muted: #94a3b8;    /* Muted text */
-            --text-inverse: #ffffff;  /* White text for dark backgrounds */
-            --border: #e2e8f0;        /* Light border */
-            --border-dark: #64748b;   /* Dark border */
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            --gradient-3: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
-            --gradient-4: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            --gradient-5: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            --radius: 12px;           /* Border radius */
-            --radius-sm: 8px;         /* Small border radius */
-            --radius-lg: 16px;        /* Large border radius */
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-colored: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary: #f1f5f9;
-                --primary-light: #e2e8f0;
-                --secondary: #93c5fd;
-                --accent: #60a5fa;
-                --accent-light: #3b82f6;
-                --accent-dark: #93c5fd;
-                --background: #0f172a;
-                --surface: #1e293b;
-                --surface-alt: #334155;
-                --surface-dark: #475569;
-                --text: #f1f5f9;
-                --text-light: #cbd5e1;
-                --text-muted: #94a3b8;
-                --border: #334155;
-                --border-dark: #475569;
-            }
-        }
-        
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--background);
-            background-image: 
-                radial-gradient(at 10% 20%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
-            color: var(--text);
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        h1 { 
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        h2 { 
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient-2);
-            border-radius: 2px;
-        }
-        
-        h3 { 
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--secondary);
-        }
-        
-        h4 { font-size: 1.25rem; }
-        h5 { font-size: 1.1rem; font-weight: 600; }
-        h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        p, ul, ol, li, blockquote {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 1.2em;
-            max-width: 65ch;
-        }
-        
-        /* Links */
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        a::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        a:hover::after {
-            width: 100%;
-        }
-        
-        a:hover {
-            color: var(--accent-dark);
-        }
-        
-        a.icon-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-md);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 64px;
-        }
-        
-        .logo {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-colored);
-        }
-        
-        .navbar-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: var(--radius-sm);
-            transition: background var(--transition);
-        }
-        
-        .navbar-toggle:hover {
-            background: var(--surface-alt);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0.25rem;
-            flex-wrap: nowrap;
-        }
-        
-        nav ul li a {
-            display: block;
-            padding: 0.5rem 0.75rem;
-            border-radius: var(--radius);
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            position: relative;
-            white-space: nowrap;
-        }
-        
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px;
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-        }
-        
-        nav ul li a:hover::before,
-        nav ul li a.active::before {
-            width: 70%;
-        }
-        
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
-        /* Main Content */
-        main {
-            margin-top: 64px;
-            min-height: calc(100vh - 64px);
-        }
-        
-        /* Programs Intro */
-        .programs-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        .programs-intro h1 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .programs-intro p {
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        
-        /* Programs Grid */
-        .programs-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        /* Program Cards */
-        .program-card {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), box-shadow var(--transition);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .program-header {
-            background: var(--gradient-2);
-            color: var(--text-inverse);
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .program-header h2 {
-            color: var(--text-inverse);
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .program-header::after {
-            display: none;
-        }
-        
-        .coming-soon {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--pink);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-        
-        .program-content {
-            padding: 2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .program-intro {
-            margin-bottom: 1.5rem;
-        }
-        
-        .program-intro h3 {
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .program-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .program-section h4 {
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .program-section h4 i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-        
-        .program-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .program-section ul li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        
-        .program-section ul li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-        
-        .program-footer {
-            margin-top: auto;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .enroll-btn {
-            background: var(--gradient-2);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
-            padding: 0.75rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-colored);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-        }
-        
-        .enroll-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
-        }
-        
-        .enroll-btn:disabled {
-            background: var(--surface-alt);
-            color: var(--text-muted);
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--gradient-4);
-            color: var(--text-inverse);
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            font-size: 0.95rem;
-            border-radius: var(--radius) var(--radius) 0 0;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: left;
-        }
-        
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        footer h4 {
-            color: var(--accent-light);
-            margin-bottom: 1rem;
-        }
-        
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        footer ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        footer a {
-            color: var(--accent-light);
-        }
-        
-        footer a:hover {
-            color: var(--accent);
-        }
-        
-        /* Loader */
-        #loader-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.7s ease;
-        }
-        
-        .spark-loader {
-            text-align: center;
-        }
-        
-        .spark-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .spark-loader-text {
-            color: var(--text-inverse);
-            font-weight: 600;
-        }
-        
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar-toggle {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 64px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 64px);
-                background: var(--surface);
-                flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s ease;
-                box-shadow: var(--shadow-lg);
-                gap: 0.5rem;
-            }
-            
-            nav ul.open {
-                left: 0;
-            }
-            
-            nav ul li a {
-                padding: 0.75rem 1rem;
-                font-size: 1rem;
-                text-align: center;
-            }
-            
-            .programs-grid {
-                grid-template-columns: 1fr;
-                padding: 0 1rem 4rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs - SPARK Institute of Data Science and Applied Statistics</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dark: #1d4ed8;
+      --purple: #8b5cf6;
+      --teal: #14b8a6;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --radius: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #f1f5f9;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-alt: #334155;
+        --text: #f1f5f9;
+        --text-light: #cbd5e1;
+        --border: #334155;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    p, ul, li {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Header */
+    header {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.9);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: #334155;
+      }
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    nav ul li a.active {
+      color: var(--accent);
+    }
+
+    /* Main */
+    main {
+      margin-top: 0;
+      padding: 4rem 0;
+    }
+
+    /* Programs Intro */
+    .programs-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* Programs Grid */
+    .programs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Program Cards */
+    .program-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .program-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .program-header {
+      background: var(--gradient);
+      color: white;
+      padding: 1.8rem 1.5rem;
+      position: relative;
+    }
+
+    .program-header h2 {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .coming-soon {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--pink);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .program-content {
+      padding: 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .program-intro {
+      margin-bottom: 1.5rem;
+    }
+
+    .program-intro h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .program-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .program-section h4 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .program-section h4 i {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .program-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .program-section ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .program-section ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .program-footer {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .enroll-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .enroll-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+    }
+
+    .enroll-btn:disabled {
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Technologies Section */
+    .tech-section {
+      padding: 4rem 1.5rem;
+      background: var(--surface-alt);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tech-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .tech-card h3 i {
+      font-size: 1.8rem;
+    }
+
+    .tech-card p {
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent-light);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-toggle { display: block; }
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+      }
+      nav ul.open { left: 0; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <div id="loader-bg">
-        <div class="spark-loader">
-            <div class="spark-logo"><span>SI</span></div>
-            <div class="spark-loader-text">SPARK Institute...</div>
-        </div>
+
+  <!-- Loader -->
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo">SI</div>
+      <div class="spark-loader-text">SPARK Institute...</div>
     </div>
-    <header>
-        <nav>
-            <div class="logo">SI</div>
-            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="logo.png" alt="SPARK Institute Logo" />
+        <span>SPARK Institute</span>
+      </div>
+      <button class="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html" class="active">Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="programs-intro">
+      <h1>Our Programs</h1>
+      <p>At SPARK Institute of Data Science and Applied Statistics, we offer specialized programs designed to equip students with the skills and knowledge needed to excel in the fields of statistics and data science. Our curriculum combines theoretical foundations with practical applications to prepare you for real-world challenges.</p>
+    </div>
+
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-header">
+          <h2>Introduction to Data Science</h2>
+        </div>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>This foundational course introduces students to the exciting world of data science. Learn the fundamental concepts, tools, and techniques that form the backbone of modern data analysis and machine learning.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="programs.html" class="active">Programs</a></li>
-                <li><a href="admissions.html">Admissions</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+              <li>Introduction to Data Science and its Applications</li>
+              <li>Data Collection and Cleaning Techniques</li>
+              <li>Exploratory Data Analysis (EDA)</li>
+              <li>Statistical Foundations for Data Science</li>
+              <li>Introduction to Programming with Python</li>
+              <li>Data Visualization Principles</li>
+              <li>Basic Machine Learning Concepts</li>
+              <li>Ethics in Data Science</li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="programs-intro fade-in">
-            <h1>Our Programs</h1>
-            <p>At SPARK Institute of Data Science and Applied Statistics, we offer specialized programs designed to equip students with the skills and knowledge needed to excel in the fields of statistics and data science. Our curriculum combines theoretical foundations with practical applications to prepare you for real-world challenges.</p>
-        </section>
-        
-        <div class="programs-grid">
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <h2>Introduction to Data Science</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>This foundational course introduces students to the exciting world of data science. Learn the fundamental concepts, tools, and techniques that form the backbone of modern data analysis and machine learning.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Introduction to Data Science and its Applications</li>
-                            <li>Data Collection and Cleaning Techniques</li>
-                            <li>Exploratory Data Analysis (EDA)</li>
-                            <li>Statistical Foundations for Data Science</li>
-                            <li>Introduction to Programming with Python</li>
-                            <li>Data Visualization Principles</li>
-                            <li>Basic Machine Learning Concepts</li>
-                            <li>Ethics in Data Science</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Understand the data science lifecycle and methodologies</li>
-                            <li>Collect, clean, and preprocess data for analysis</li>
-                            <li>Perform exploratory data analysis using statistical methods</li>
-                            <li>Create effective data visualizations to communicate insights</li>
-                            <li>Apply basic machine learning algorithms to solve problems</li>
-                            <li>Recognize ethical considerations in data science projects</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn">
-                            <i class="fas fa-user-plus"></i> Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <span class="coming-soon">Coming Soon</span>
-                    <h2>Infectious Disease Modeling</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>A cutting-edge course focusing on the statistical and computational modeling of infectious diseases, including epidemic forecasting and intervention strategies. Perfect for those interested in public health data science.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Epidemiological Principles and Disease Dynamics</li>
-                            <li>Mathematical Modeling of Infectious Diseases</li>
-                            <li>Statistical Methods for Epidemiological Data</li>
-                            <li>Compartmental Models (SIR, SEIR, etc.)</li>
-                            <li>Spatial and Temporal Disease Spread</li>
-                            <li>Intervention Strategies and Impact Assessment</li>
-                            <li>Forecasting Epidemic Trends</li>
-                            <li>Real-world Case Studies and Applications</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Build mathematical models for infectious disease dynamics</li>
-                            <li>Analyze epidemiological data using statistical methods</li>
-                            <li>Simulate disease spread under various scenarios</li>
-                            <li>Evaluate the effectiveness of public health interventions</li>
-                            <li>Forecast disease trends using computational models</li>
-                            <li>Communicate findings to public health stakeholders</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn" disabled>
-                            <i class="fas fa-clock"></i> Coming Soon
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <h2>Machine Learning Fundamentals</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>Dive deep into the world of machine learning with this comprehensive course. From basic algorithms to advanced techniques, learn how to build, train, and deploy machine learning models for various applications.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Introduction to Machine Learning and AI</li>
-                            <li>Supervised Learning: Regression and Classification</li>
-                            <li>Unsupervised Learning: Clustering and Dimensionality Reduction</li>
-                            <li>Neural Networks and Deep Learning Basics</li>
-                            <li>Model Evaluation and Validation Techniques</li>
-                            <li>Feature Engineering and Selection</li>
-                            <li>Ensemble Methods and Model Stacking</li>
-                            <li>Practical Applications and Project Work</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Implement various machine learning algorithms from scratch</li>
-                            <li>Preprocess and engineer features for model training</li>
-                            <li>Evaluate model performance using appropriate metrics</li>
-                            <li>Tune hyperparameters to optimize model performance</li>
-                            <li>Apply machine learning to real-world problems</li>
-                            <li>Understand the ethical implications of ML models</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn">
-                            <i class="fas fa-user-plus"></i> Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <h2>Statistical Analysis with R</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>Master the art of statistical analysis using R, the language of statisticians. This course covers everything from basic statistical concepts to advanced analytical techniques using R programming.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Introduction to R and RStudio</li>
-                            <li>Data Structures and Manipulation in R</li>
-                            <li>Descriptive Statistics and Data Visualization</li>
-                            <li>Probability Distributions and Hypothesis Testing</li>
-                            <li>Regression Analysis (Linear and Multiple)</li>
-                            <li>Analysis of Variance (ANOVA)</li>
-                            <li>Time Series Analysis and Forecasting</li>
-                            <li>Creating Reports with R Markdown</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Write efficient R code for data analysis</li>
-                            <li>Perform comprehensive statistical analyses</li>
-                            <li>Create publication-quality visualizations</li>
-                            <li>Conduct hypothesis tests and interpret results</li>
-                            <li>Build and validate statistical models</li>
-                            <li>Communicate findings through reproducible reports</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn">
-                            <i class="fas fa-user-plus"></i> Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <span class="coming-soon">Coming Soon</span>
-                    <h2>Big Data Analytics</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>Learn to handle and analyze massive datasets using modern big data technologies. This course covers the tools and techniques needed to extract insights from large-scale data in distributed computing environments.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Introduction to Big Data Concepts and Challenges</li>
-                            <li>Hadoop Ecosystem and MapReduce</li>
-                            <li>Spark for Big Data Processing</li>
-                            <li>NoSQL Databases (MongoDB, Cassandra)</li>
-                            <li>Stream Processing with Kafka and Spark Streaming</li>
-                            <li>Cloud Computing for Big Data (AWS, Azure, GCP)</li>
-                            <li>Big Data Visualization and Reporting</li>
-                            <li>Real-world Big Data Case Studies</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Set up and configure big data processing environments</li>
-                            <li>Process large datasets using distributed computing</li>
-                            <li>Design and implement NoSQL database solutions</li>
-                            <li>Build real-time data processing pipelines</li>
-                            <li>Analyze big data using Spark and other tools</li>
-                            <li>Solve real-world big data challenges</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn" disabled>
-                            <i class="fas fa-clock"></i> Coming Soon
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="program-card fade-in">
-                <div class="program-header">
-                    <h2>Data Visualization & Storytelling</h2>
-                </div>
-                <div class="program-content">
-                    <div class="program-intro">
-                        <h3>Course Overview</h3>
-                        <p>Transform data into compelling visual stories that drive decision-making. This course teaches the principles and practices of effective data visualization and storytelling using modern tools and techniques.</p>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-list"></i> Course Outline</h4>
-                        <ul>
-                            <li>Principles of Effective Data Visualization</li>
-                            <li>Visual Perception and Cognitive Psychology</li>
-                            <li>Tools for Data Visualization (Tableau, Power BI, Python)</li>
-                            <li>Creating Interactive Dashboards</li>
-                            <li>Advanced Visualization Techniques</li>
-                            <li>Data Storytelling and Narrative Structure</li>
-                            <li>Visualizing Geospatial and Temporal Data</li>
-                            <li>Presenting Data Insights Effectively</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-section">
-                        <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
-                        <ul>
-                            <li>Design effective visualizations for different data types</li>
-                            <li>Use industry-standard visualization tools proficiently</li>
-                            <li>Create interactive dashboards for data exploration</li>
-                            <li>Craft compelling data narratives and stories</li>
-                            <li>Choose appropriate visualization techniques for data</li>
-                            <li>Present data insights to diverse audiences</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="program-footer">
-                        <button class="enroll-btn">
-                            <i class="fas fa-user-plus"></i> Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Understand the data science lifecycle and methodologies</li>
+              <li>Collect, clean, and preprocess data for analysis</li>
+              <li>Perform exploratory data analysis using statistical methods</li>
+              <li>Create effective data visualizations to communicate insights</li>
+              <li>Apply basic machine learning algorithms to solve problems</li>
+              <li>Recognize ethical considerations in data science projects</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn">
+              <i class="fas fa-user-plus"></i> Enroll Now
+            </button>
+          </div>
         </div>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <div>
-                <h4>SPARK Institute</h4>
-                <p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
-                <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
-                <p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="programs.html">Programs</a></li>
-                    <li><a href="admissions.html">Admissions</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Academic</h4>
-                <ul>
-                    <li><a href="programs.html">Undergraduate Programs</a></li>
-                    <li><a href="programs.html">Graduate Programs</a></li>
-                    <li><a href="programs.html">Certificate Programs</a></li>
-                    <li><a href="research.html">Research Areas</a></li>
-                    <li><a href="faculty.html">Faculty Directory</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Connect With Us</h4>
-                <p>
-                    <a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-facebook"></i> Facebook</a><br>
-                    <a href="#" class="icon-link"><i class="fab fa-instagram"></i> Instagram</a>
-                </p>
-            </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-header">
+          <span class="coming-soon">Coming Soon</span>
+          <h2>Infectious Disease Modeling</h2>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>A cutting-edge course focusing on the statistical and computational modeling of infectious diseases, including epidemic forecasting and intervention strategies. Perfect for those interested in public health data science.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
+            <ul>
+              <li>Epidemiological Principles and Disease Dynamics</li>
+              <li>Mathematical Modeling of Infectious Diseases</li>
+              <li>Statistical Methods for Epidemiological Data</li>
+              <li>Compartmental Models (SIR, SEIR, etc.)</li>
+              <li>Spatial and Temporal Disease Spread</li>
+              <li>Intervention Strategies and Impact Assessment</li>
+              <li>Forecasting Epidemic Trends</li>
+              <li>Real-world Case Studies and Applications</li>
+            </ul>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Build mathematical models for infectious disease dynamics</li>
+              <li>Analyze epidemiological data using statistical methods</li>
+              <li>Simulate disease spread under various scenarios</li>
+              <li>Evaluate the effectiveness of public health interventions</li>
+              <li>Forecast disease trends using computational models</li>
+              <li>Communicate findings to public health stakeholders</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn" disabled>
+              <i class="fas fa-clock"></i> Coming Soon
+            </button>
+          </div>
         </div>
-    </footer>
-    
-    <script>
-        // Loader logic and responsive nav
-        window.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const loader = document.getElementById('loader-bg');
-                loader.style.opacity = 0;
-                setTimeout(function() {
-                    loader.style.display = 'none';
-                }, 700);
-                
-                // Responsive nav
-                const navToggle = document.getElementById('navbar-toggle');
-                const navUl = document.querySelector('nav ul');
-                navToggle.addEventListener('click', function() {
-                    navUl.classList.toggle('open');
-                });
-                navUl.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => navUl.classList.remove('open'));
-                });
-            }, 1200);
-        });
-        
-        // Add fade-in animation to elements
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.program-card').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+      </div>
+
+      <div class="program-card">
+        <div class="program-header">
+          <h2>Machine Learning Fundamentals</h2>
+        </div>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>Dive deep into the world of machine learning with this comprehensive course. From basic algorithms to advanced techniques, learn how to build, train, and deploy machine learning models for various applications.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
+            <ul>
+              <li>Introduction to Machine Learning and AI</li>
+              <li>Supervised Learning: Regression and Classification</li>
+              <li>Unsupervised Learning: Clustering and Dimensionality Reduction</li>
+              <li>Neural Networks and Deep Learning Basics</li>
+              <li>Model Evaluation and Validation Techniques</li>
+              <li>Feature Engineering and Selection</li>
+              <li>Ensemble Methods and Model Stacking</li>
+              <li>Practical Applications and Project Work</li>
+            </ul>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Implement various machine learning algorithms from scratch</li>
+              <li>Preprocess and engineer features for model training</li>
+              <li>Evaluate model performance using appropriate metrics</li>
+              <li>Tune hyperparameters to optimize model performance</li>
+              <li>Apply machine learning to real-world problems</li>
+              <li>Understand the ethical implications of ML models</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn">
+              <i class="fas fa-user-plus"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-header">
+          <h2>Statistical Analysis with R</h2>
+        </div>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>Master the art of statistical analysis using R, the language of statisticians. This course covers everything from basic statistical concepts to advanced analytical techniques using R programming.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
+            <ul>
+              <li>Introduction to R and RStudio</li>
+              <li>Data Structures and Manipulation in R</li>
+              <li>Descriptive Statistics and Data Visualization</li>
+              <li>Probability Distributions and Hypothesis Testing</li>
+              <li>Regression Analysis (Linear and Multiple)</li>
+              <li>Analysis of Variance (ANOVA)</li>
+              <li>Time Series Analysis and Forecasting</li>
+              <li>Creating Reports with R Markdown</li>
+            </ul>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Write efficient R code for data analysis</li>
+              <li>Perform comprehensive statistical analyses</li>
+              <li>Create publication-quality visualizations</li>
+              <li>Conduct hypothesis tests and interpret results</li>
+              <li>Build and validate statistical models</li>
+              <li>Communicate findings through reproducible reports</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn">
+              <i class="fas fa-user-plus"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-header">
+          <span class="coming-soon">Coming Soon</span>
+          <h2>Big Data Analytics</h2>
+        </div>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>Learn to handle and analyze massive datasets using modern big data technologies. This course covers the tools and techniques needed to extract insights from large-scale data in distributed computing environments.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
+            <ul>
+              <li>Introduction to Big Data Concepts and Challenges</li>
+              <li>Hadoop Ecosystem and MapReduce</li>
+              <li>Spark for Big Data Processing</li>
+              <li>NoSQL Databases (MongoDB, Cassandra)</li>
+              <li>Stream Processing with Kafka and Spark Streaming</li>
+              <li>Cloud Computing for Big Data (AWS, Azure, GCP)</li>
+              <li>Big Data Visualization and Reporting</li>
+              <li>Real-world Big Data Case Studies</li>
+            </ul>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Set up and configure big data processing environments</li>
+              <li>Process large datasets using distributed computing</li>
+              <li>Design and implement NoSQL database solutions</li>
+              <li>Build real-time data processing pipelines</li>
+              <li>Analyze big data using Spark and other tools</li>
+              <li>Solve real-world big data challenges</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn" disabled>
+              <i class="fas fa-clock"></i> Coming Soon
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-header">
+          <h2>Data Visualization & Storytelling</h2>
+        </div>
+        <div class="program-content">
+          <div class="program-intro">
+            <h3>Course Overview</h3>
+            <p>Transform data into compelling visual stories that drive decision-making. This course teaches the principles and practices of effective data visualization and storytelling using modern tools and techniques.</p>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-list"></i> Course Outline</h4>
+            <ul>
+              <li>Principles of Effective Data Visualization</li>
+              <li>Visual Perception and Cognitive Psychology</li>
+              <li>Tools for Data Visualization (Tableau, Power BI, Python)</li>
+              <li>Creating Interactive Dashboards</li>
+              <li>Advanced Visualization Techniques</li>
+              <li>Data Storytelling and Narrative Structure</li>
+              <li>Visualizing Geospatial and Temporal Data</li>
+              <li>Presenting Data Insights Effectively</li>
+            </ul>
+          </div>
+
+          <div class="program-section">
+            <h4><i class="fas fa-target"></i> Learning Outcomes</h4>
+            <ul>
+              <li>Design effective visualizations for different data types</li>
+              <li>Use industry-standard visualization tools proficiently</li>
+              <li>Create interactive dashboards for data exploration</li>
+              <li>Craft compelling data narratives and stories</li>
+              <li>Choose appropriate visualization techniques for data</li>
+              <li>Present data insights to diverse audiences</li>
+            </ul>
+          </div>
+
+          <div class="program-footer">
+            <button class="enroll-btn">
+              <i class="fas fa-user-plus"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Technologies We Use -->
+  <section class="tech-section">
+    <div class="container">
+      <h2 class="text-center">Technologies You'll Master</h2>
+      <p class="text-center">Our curriculum integrates industry-leading tools and platforms used by data scientists worldwide.</p>
+      <div class="tech-grid">
+        <!-- Python -->
+        <div class="tech-card">
+          <h3><i class="fab fa-python" style="color: #3776AB;"></i> Python</h3>
+          <p>Whether you're new to programming or an experienced developer, it's easy to learn and use Python. It compiles and runs on a wide variety of platforms and is the most popular language in data science and machine learning.</p>
+          <a href="https://www.python.org" target="_blank" class="btn" style="background: #3776AB;">Learn More</a>
+        </div>
+
+        <!-- R -->
+        <div class="tech-card">
+          <h3><i class="fab fa-r-project" style="color: #276498;"></i> R</h3>
+          <p>R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS, making it ideal for academic and industry research.</p>
+          <a href="https://www.r-project.org" target="_blank" class="btn" style="background: #276498;">Learn More</a>
+        </div>
+
+        <!-- MySQL -->
+        <div class="tech-card">
+          <h3><i class="fas fa-database" style="color: #F29111;"></i> MySQL</h3>
+          <p>Use automated and integrated generative AI and machine learning (ML) in one cloud service for transactions and lakehouse scale analytics. Get faster insights from all your data with unmatched performance.</p>
+          <a href="https://www.mysql.com" target="_blank" class="btn" style="background: #F29111;">Learn More</a>
+        </div>
+
+        <!-- TensorFlow -->
+        <div class="tech-card">
+          <h3><i class="fab fa-tensorflow" style="color: #FF6F00;"></i> TensorFlow</h3>
+          <p>Whether you're new to programming or an experienced developer, it's easy to learn and use TensorFlow for building and deploying ML models at scale.</p>
+          <a href="https://www.tensorflow.org" target="_blank" class="btn" style="background: #FF6F00;">Learn More</a>
+        </div>
+
+        <!-- Tableau -->
+        <div class="tech-card">
+          <h3><i class="fas fa-chart-line" style="color: #2F4F74;"></i> Tableau</h3>
+          <p>Fuel faster data, insights, and action with Tableau Next. Turn trusted insights into autonomous action anytime, anywhere, with the world's first agentic analytics platform.</p>
+          <a href="https://www.tableau.com" target="_blank" class="btn" style="background: #2F4F74;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>SPARK Institute</h4>
+        <p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
+        <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
+        <p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="programs.html">Undergraduate Programs</a></li>
+          <li><a href="programs.html">Graduate Programs</a></li>
+          <li><a href="programs.html">Certificate Programs</a></li>
+          <li><a href="research.html">Research Areas</a></li>
+          <li><a href="faculty.html">Faculty Directory</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect With Us</h4>
+        <p>
+          <a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-facebook"></i> Facebook</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-instagram"></i> Instagram</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menu Toggle
+    const toggle = document.querySelector('.navbar-toggle');
+    const menu = document.querySelector('nav ul');
+    toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Close menu on link click
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+
+    // Loader
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader-bg');
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
