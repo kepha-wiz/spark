@@ -1,1176 +1,762 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SPARK Institute of Data Science and Applied Statistics offers world-class programs and research opportunities in data science and statistics.">
-<title>SPARK Institute of Data Science and Applied Statistics</title>
-<!-- Favicon -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="logo.png" type="image/x-icon">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script type="text/javascript">
-var gk_isXlsx = false;
-var gk_xlsxFileLookup = {};
-var gk_fileData = {};
-function filledCell(cell) {
-return cell !== '' && cell != null;
-}
-function loadFileData(filename) {
-if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-try {
-var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-var firstSheetName = workbook.SheetNames[0];
-var worksheet = workbook.Sheets[firstSheetName];
-var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-var filteredData = jsonData.filter(row => row.some(filledCell));
-var headerRowIndex = filteredData.findIndex((row, index) =>
-row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-);
-if (headerRowIndex === -1 || headerRowIndex > 25) {
-headerRowIndex = 0;
-}
-var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-return csv;
-} catch (e) {
-console.error(e);
-return "";
-}
-}
-return gk_fileData[filename] || "";
-}
-</script>
-<script src="main.js" defer></script>
-<style>
-/* ================================
-Modern Data Science Theme v4.0
-================================ */
-:root {
-/* Modern Data Science Color Palette */
---primary: #0f172a; /* Deep navy blue - primary */
---primary-light: #1e293b; /* Lighter navy blue */
---secondary: #1e3a8a; /* Deep blue for accents */
---accent: #3b82f6; /* Bright blue for CTAs */
---accent-light: #60a5fa; /* Lighter blue */
---accent-dark: #1d4ed8; /* Darker blue */
---purple: #8b5cf6; /* Purple for highlights */
---purple-dark: #7c3aed; /* Darker purple */
---teal: #14b8a6; /* Teal for data elements */
---teal-dark: #0d9488; /* Darker teal */
---cyan: #06b6d4; /* Cyan for tech elements */
---pink: #ec4899; /* Pink for highlights */
---background: #f1f5f9; /* Light gray-blue background */
---surface: #ffffff; /* White surface */
---surface-alt: #e2e8f0; /* Light gray alternative surface */
---surface-dark: #334155; /* Dark surface */
---text: #0f172a; /* Dark text */
---text-light: #64748b; /* Light text */
---text-muted: #94a3b8; /* Muted text */
---text-inverse: #ffffff; /* White text for dark backgrounds */
---border: #e2e8f0; /* Light border */
---border-dark: #64748b; /* Dark border */
---gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
---gradient-2: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
---gradient-3: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
---gradient-4: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
---gradient-5: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
---radius: 12px; /* Border radius */
---radius-sm: 8px; /* Small border radius */
---radius-lg: 16px; /* Large border radius */
---shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
---shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
---shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
---shadow-colored: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
---transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-@media (prefers-color-scheme: dark) {
-:root {
---primary: #f1f5f9;
---primary-light: #e2e8f0;
---secondary: #93c5fd;
---accent: #60a5fa;
---accent-light: #3b82f6;
---accent-dark: #93c5fd;
---background: #0f172a;
---surface: #1e293b;
---surface-alt: #334155;
---surface-dark: #475569;
---text: #f1f5f9;
---text-light: #cbd5e1;
---text-muted: #94a3b8;
---border: #334155;
---border-dark: #475569;
-}
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-background: var(--background);
-background-image:
-radial-gradient(at 10% 20%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-radial-gradient(at 90% 80%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
-color: var(--text);
-font-size: 16px;
-line-height: 1.6;
-overflow-x: hidden;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SPARK Institute of Data Science and Applied Statistics offers world-class programs and research opportunities in data science and statistics.">
+  <title>SPARK Institute of Data Science and Applied Statistics</title>
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-font-weight: 700;
-line-height: 1.2;
-margin-bottom: 1rem;
-color: var(--primary);
-}
-h1 {
-font-size: clamp(2rem, 5vw, 3.5rem);
-background: var(--gradient-2);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-h2 {
-font-size: clamp(1.75rem, 4vw, 2.5rem);
-position: relative;
-display: inline-block;
-}
-h2::after {
-content: '';
-position: absolute;
-bottom: -8px;
-left: 0;
-width: 60px;
-height: 4px;
-background: var(--gradient-2);
-border-radius: 2px;
-}
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--secondary);}
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.1rem; font-weight: 600; }
-h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-p, ul, ol, li, blockquote {
-font-size: 1.05rem;
-color: var(--text-light);
-margin-bottom: 1.2em;
-max-width: 65ch;
-}
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
 
-/* Links */
-a {
-color: var(--accent);
-text-decoration: none;
-transition: var(--transition);
-position: relative;
-}
-a::after {
-content: "";
-position: absolute;
-bottom: -2px;
-left: 0;
-width: 0;
-height: 2px;
-background: var(--accent);
-transition: width 0.3s ease;
-}
-a:hover::after { width: 100%; }
-a:hover { color: var(--accent-dark);}
-a.icon-link { display: inline-flex; align-items: center; gap: 0.5rem;}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
 
-/* Header & Navigation */
-header {
-background: rgba(255, 255, 255, 0.85);
-backdrop-filter: blur(10px);
-box-shadow: var(--shadow-md);
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 10000;
-border-bottom: 1px solid var(--border);
-}
-nav {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0.75rem 1.5rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
-height: 64px;
-z-index: 10001;
-}
-.logo {
-width: 40px; height: 40px;
-background: var(--gradient-2);
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-color: white;
-font-weight: bold;
-font-size: 1.2rem;
-box-shadow: var(--shadow-colored);
-}
-.navbar-toggle {
-display: none;
-background: none;
-border: none;
-font-size: 1.5rem;
-color: var(--primary);
-cursor: pointer;
-padding: 0.5rem;
-border-radius: var(--radius-sm);
-transition: background var(--transition);
-}
-.navbar-toggle:hover { background: var(--surface-alt);}
-nav ul {
-display: flex;
-list-style: none;
-gap: 0.25rem;
-flex-wrap: nowrap;
-}
-nav ul li a {
-display: block;
-padding: 0.5rem 0.75rem;
-border-radius: var(--radius);
-color: var(--text);
-font-weight: 500;
-font-size: 0.9rem;
-transition: var(--transition);
-position: relative;
-white-space: nowrap;
-}
-nav ul li a::before {
-content: '';
-position: absolute;
-bottom: 0;
-left: 50%;
-width: 0;
-height: 2px;
-background: var(--accent);
-border-radius: 2px;
-transform: translateX(-50%);
-transition: width 0.3s ease;
-}
-nav ul li a:hover::before,
-nav ul li a.active::before {
-width: 70%;
-}
-nav ul li a:hover,
-nav ul li a.active {
-color: var(--accent);
-background: rgba(59, 130, 246, 0.1);
-}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-/* Main Content */
-main { margin-top: 64px; min-height: calc(100vh - 64px);}
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="main.js" defer></script>
 
-/* Hero Section with Slideshow */
-.hero {
-position: relative;
-margin: 0 auto 2rem;
-max-width: 1200px;
-overflow: hidden;
-z-index: 1;
-padding-top: 64px;
-}
-.hero-bg-slideshow {
-position: relative;
-width: 100%;
-height: 420px;
-overflow: hidden;
-border-radius: 0 0 16px 16px;
-box-shadow: var(--shadow-lg);
-}
-.hero-bg-slide {
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-object-fit: cover;
-opacity: 0;
-transition: opacity 1s ease;
-z-index: 1;
-}
-.hero-bg-slide.active { opacity: 1; z-index: 2;}
-.hero-content-overlay {
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-background: linear-gradient(90deg,rgba(15,23,42,0.85) 0%,rgba(30,41,59,0.75) 100%);
-z-index: 4;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 2rem 1rem 1rem 1rem;
-}
-.hero-content {
-position: relative;
-z-index: 5;
-color: #fff;
-text-align: center;
-max-width: 700px;
-margin: 0 auto;
-margin-top: 0;
-background: none;
-}
-.hero-content h1 {
-color: #fff;
-font-size: 2.5rem;
-margin-bottom: 1rem;
-background: linear-gradient(to right,#ffffff,#60a5fa);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-.hero-content p { color: #e2e8f0; font-size: 1.2rem; margin-bottom: 2rem;}
-.hero-logo {
-width: clamp(70px, 25vw, 100px);
-height: clamp(70px, 25vw, 100px);
-margin-bottom: 1rem;
-border-radius: 50%; overflow: hidden;
-box-shadow: 0 0 30px rgba(59,130,246,0.5);
-background: white;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.hero-logo img {
-width: 100%; height: 100%; object-fit: contain; padding: 10px;
-}
-.hero-content .d-flex {
-flex-direction: column;
-gap: 1rem;
-margin-top: 1.2rem;
-align-items: center;
-width: 100%;
-}
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dark: #1d4ed8;
+      --purple: #8b5cf6;
+      --teal: #14b8a6;
+      --pink: #ec4899;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --gradient-alt: linear-gradient(135deg, #14b8a6, #3b82f6);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --radius: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s ease;
+    }
 
-/* Buttons */
-.cta-button, .btn, button, input[type="submit"] {
-background: var(--gradient-2);
-color: white;
-border: none;
-border-radius: var(--radius);
-padding: 12px 28px;
-font-size: 1rem;
-font-weight: 600;
-cursor: pointer;
-transition: all var(--transition);
-box-shadow: var(--shadow-colored);
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 0.5rem;
-}
-.cta-button:hover, .btn:hover, button:hover, input[type="submit"]:hover {
-transform: translateY(-2px);
-box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
-}
-button:active { transform: scale(0.97); }
-button:disabled {
-background: #ccc;
-color: #666;
-cursor: not-allowed;
-transform: none;
-box-shadow: none;
-}
-.btn-outline {
-background: transparent;
-border: 2px solid var(--accent);
-color: var(--accent);
-}
-.btn-outline:hover {
-background: var(--accent);
-color: white;
-box-shadow: var(--shadow-colored);
-}
-.btn-secondary {
-background: var(--surface-alt);
-color: var(--text);
-border: 1px solid var(--border);
-}
-.btn-secondary:hover {
-background: var(--accent-light);
-color: var(--primary);
-}
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #f1f5f9;
+        --primary-light: #e2e8f0;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-alt: #334155;
+        --text: #f1f5f9;
+        --text-light: #cbd5e1;
+        --border: #334155;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+    }
 
-/* Sections */
-section { padding: 2rem 0; }
-.container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 1.5rem;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Vision Mission About Section */
-.vma-section {
-background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-border-radius: var(--radius-lg);
-padding: 3rem 2rem;
-margin: 2rem auto;
-position: relative;
-overflow: hidden;
-}
-.vma-section::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: var(--gradient-2);
-}
-.vma-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2rem;
-align-items: start;
-}
-.vma-card {
-background: var(--surface);
-border-radius: var(--radius);
-padding: 2rem;
-box-shadow: var(--shadow-md);
-transition: transform var(--transition), box-shadow var(--transition);
-position: relative;
-overflow: hidden;
-height: 100%;
-}
-.vma-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 4px;
-height: 100%;
-background: var(--gradient-2);
-opacity: 0;
-transition: opacity var(--transition);
-}
-.vma-card:hover::before { opacity: 1; }
-.vma-card:hover {
-transform: translateY(-5px);
-box-shadow: var(--shadow-lg);
-}
-.vma-icon {
-width: 60px; height: 60px;
-background: var(--gradient-2);
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-color: white;
-font-size: 1.5rem;
-margin-bottom: 1.5rem;
-box-shadow: var(--shadow-colored);
-}
-.vma-card h3 {
-color: var(--secondary);
-margin-bottom: 1rem;
-font-size: 1.5rem;
-}
-.vma-card p {
-color: var(--text-light);
-margin-bottom: 1rem;
-}
-.vision-quote {
-background: var(--gradient-4);
-color: var(--text-inverse);
-padding: 2rem;
-border-radius: var(--radius);
-margin-bottom: 2rem;
-position: relative;
-font-style: italic;
-font-size: 1.2rem;
-text-align: center;
-box-shadow: var(--shadow-lg);
-}
-.vision-quote::before {
-content: '"';
-position: absolute;
-top: -20px;
-left: 20px;
-font-size: 4rem;
-color: rgba(255, 255, 255, 0.2);
-}
-.vision-quote::after {
-content: '"';
-position: absolute;
-bottom: -50px;
-right: 20px;
-font-size: 4rem;
-color: rgba(255, 255, 255, 0.2);
-}
-.mission-list {
-list-style: none;
-padding: 0;
-}
-.mission-list li {
-display: flex;
-align-items: flex-start;
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: rgba(59, 130, 246, 0.05);
-border-radius: var(--radius);
-transition: background var(--transition);
-}
-.mission-list li:hover {
-background: rgba(59, 130, 246, 0.1);
-}
-.mission-list li i {
-color: var(--accent);
-margin-right: 1rem;
-font-size: 1.2rem;
-margin-top: 0.2rem;
-}
-.mission-list li strong {
-color: var(--secondary);
-display: block;
-margin-bottom: 0.5rem;
-}
-.about-features {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 1rem;
-margin-top: 1.5rem;
-}
-.about-feature {
-background: rgba(139, 92, 246, 0.05);
-padding: 1rem;
-border-radius: var(--radius);
-text-align: center;
-transition: transform var(--transition);
-}
-.about-feature:hover {
-transform: translateY(-3px);
-background: rgba(139, 92, 246, 0.1);
-}
-.about-feature i {
-font-size: 2rem;
-background: var(--gradient-5);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-margin-bottom: 0.5rem;
-}
-.about-feature h4 {
-color: var(--secondary);
-font-size: 1rem;
-margin-bottom: 0.5rem;
-}
-.about-feature p {
-font-size: 0.9rem;
-margin: 0;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* Cards */
-.main-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 24px;
-margin-bottom: 48px;
-}
-.card, .program-card, .event-card, .blog-post, .tech-card {
-background: var(--surface);
-border-radius: var(--radius);
-padding: 24px;
-box-shadow: var(--shadow);
-transition: transform var(--transition), box-shadow var(--transition);
-border: 1px solid var(--border);
-position: relative;
-overflow: hidden;
-}
-.card::before, .tech-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 4px;
-background: var(--gradient-2);
-opacity: 0;
-transition: opacity var(--transition);
-}
-.card:hover::before, .tech-card:hover::before { opacity: 1; }
-.card:hover, .tech-card:hover {
-transform: translateY(-4px);
-box-shadow: var(--shadow-lg);
-}
-.card.featured {
-background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-border-left: 4px solid var(--accent);
-}
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-/* Tech Section */
-.tech-filters {
-display: flex;
-gap: 1rem;
-justify-content: center;
-margin-bottom: 2rem;
-flex-wrap: wrap;
-}
-.tech-filters button {
-background: var(--surface-alt);
-border: 1px solid var(--border);
-border-radius: var(--radius);
-padding: 0.75rem 1.5rem;
-font-size: 1rem;
-font-weight: 500;
-color: var(--text);
-cursor: pointer;
-transition: all var(--transition);
-}
-.tech-filters button:hover {
-background: var(--gradient-2);
-color: white;
-transform: translateY(-2px);
-}
-.tech-filters button.active {
-background: var(--gradient-2);
-color: white;
-box-shadow: var(--shadow-colored);
-}
-.tech-icon {
-font-size: 3rem;
-background: var(--gradient-3);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-margin-bottom: 1rem;
-}
-.tech-meta {
-font-size: 0.9rem;
-color: var(--text-muted);
-margin-bottom: 1rem;
-display: flex;
-justify-content: center;
-gap: 1rem;
-flex-wrap: wrap;
-}
-.tech-meta .category::before {
-content: '\f02c';
-font-family: 'Font Awesome 6 Free';
-font-weight: 900;
-margin-right: 0.5rem;
-}
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-/* Footer */
-footer {
-background: var(--gradient-4);
-color: var(--text-inverse);
-text-align: center;
-padding: 3rem 2rem;
-margin-top: 4rem;
-font-size: 0.95rem;
-border-radius: var(--radius) var(--radius) 0 0;
-}
-.footer-content {
-max-width: 1200px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 2rem;
-text-align: left;
-}
-.footer-bottom {
-margin-top: 2rem;
-padding-top: 1.5rem;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 1rem;
-}
-footer h4 {
-color: var(--accent-light);
-margin-bottom: 1rem;
-}
-footer ul {
-list-style: none;
-padding: 0;
-}
-footer ul li {
-margin-bottom: 0.5rem;
-}
-footer a {
-color: var(--accent-light);
-}
-footer a:hover {
-color: var(--accent);
-}
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
 
-/* Loader */
-#loader-bg {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: var(--gradient-4);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 9999;
-transition: opacity 0.7s ease;
-}
-.spark-loader {
-text-align: center;
-}
-.spark-logo {
-width: 80px; height: 80px;
-background: var(--gradient-2);
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 0 auto 1rem;
-color: white;
-font-size: 1.8rem;
-font-weight: bold;
-animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.1); }
-100% { transform: scale(1); }
-}
-.spark-loader-text {
-color: var(--text-inverse);
-font-weight: 600;
-}
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
 
-/* Utility Classes */
-.m-0 { margin: 0; }
-.mt-1 { margin-top: 0.25rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-4 { margin-top: 1rem; }
-.mb-1 { margin-bottom: 0.25rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.p-4 { padding: 1rem; }
-.d-flex { display: flex; }
-.d-flex-col { flex-direction: column; }
-.justify-center { justify-content: center; }
-.align-center { align-items: center; }
-.gap-4 { gap: 1rem; }
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-uppercase { text-transform: uppercase; }
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-.font-medium { font-weight: 500; }
-.font-light { font-weight: 300; }
+    p, ul, li {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-.navbar-toggle { display: block;}
-nav ul {
-position: fixed;
-top: 64px; left: -100%;
-width: 100%; height: calc(100vh - 64px);
-background: var(--surface);
-flex-direction: column;
-padding: 2rem;
-transition: left 0.3s ease;
-box-shadow: var(--shadow-lg);
-gap: 0.5rem;
-}
-nav ul.open { left: 0;}
-nav ul li a {
-padding: 0.75rem 1rem;
-font-size: 1rem;
-text-align: center;
-}
-.hero {
-padding-top: 64px;
-}
-.hero-bg-slideshow { height: 320px;}
-.hero-content h1 { font-size: 1.8rem;}
-.hero-content p { font-size: 1rem;}
-.vma-section { padding: 2rem 1rem;}
-.vma-grid { grid-template-columns: 1fr;}
-.footer-content { grid-template-columns: 1fr;}
-.footer-bottom { flex-direction: column; text-align: center;}
-.hero-content .d-flex { flex-direction: column; gap: 1rem;}
-.hero-content .cta-button,.hero-content .btn-outline { width: 100%;}
-.tech-filters button { padding: 0.5rem 1rem; font-size: 0.9rem;}
-.main-grid { grid-template-columns: 1fr;}
-.hero-content-overlay { padding-top: 5rem;}
-.hero-content { margin-top: 1.5rem;}
-.hero-logo { width: 100px; height: 100px; margin-bottom: 1.2rem;}
-}
-@media (max-width: 600px) {
-h1 { font-size: 2.2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.5rem; }
-.card, .program-card, .event-card, .tech-card {
-padding: 16px 12px;
-}
-.hero-bg-slideshow { height: 260px;}
-.hero-content h1 { font-size: 1.5rem;}
-.hero-content p { font-size: 0.9rem;}
-.vision-quote { font-size: 1rem; padding: 1.5rem;}
-main { padding: 20px 10px;}
-.container { padding: 0 1rem;}
-.vma-card { padding: 1.5rem;}
-.mission-list li { flex-direction: column; align-items: flex-start;}
-.mission-list li i { margin-bottom: 0.5rem;}
-.about-features { grid-template-columns: repeat(2,1fr);}
-.hero-content-overlay { padding-top: 5.5rem;}
-.hero-content { margin-top: 2.2rem;}
-.hero-content .cta-button,
-.hero-content .btn-outline {
-font-size: 1rem; min-width: 120px; max-width: 100%;
-}
-.hero-logo { width: 80px; height: 80px; margin-bottom: 1rem;}
-}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-width: 10px;
-height: 10px;
-}
-::-webkit-scrollbar-track {
-background: var(--surface-alt);
-}
-::-webkit-scrollbar-thumb {
-background: var(--border);
-border-radius: 20px;
-}
-::-webkit-scrollbar-thumb:hover {
-background: var(--text-muted);
-}
+    a:hover {
+      color: var(--accent-dark);
+    }
 
-/* Animations */
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-.fade-in {
-animation: fadeIn 0.6s ease-out forwards;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
 
-/* Print Styles */
-@media print {
-body {
-background: white;
-color: black;
-font-size: 12pt;
-}
-nav, .hero, .footer, .glassbar {
-display: none;
-}
-.card, .program-card, .event-card, .tech-card {
-box-shadow: none;
-border: 1px solid #ddd;
-}
-}
-</style>
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Header */
+    header {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(15, 23, 42, 0.8);
+        border-color: #334155;
+      }
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero-content h1 {
+      color: white;
+      background: linear-gradient(to right, #ffffff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* CTA: e-Learning Portal */
+    .cta-section {
+      padding: 4rem 2rem;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: white;
+    }
+
+    .cta-section h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cta-button-large {
+      background: white;
+      color: var(--accent);
+      font-size: 1.2rem;
+      padding: 16px 40px;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-button-large:hover {
+      transform: scale(1.05);
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .vision-mission-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .vision-mission-card h3 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .vision-mission-card p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .vision-mission-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .vision-mission-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .vision-mission-card ul li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: var(--accent-light);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-toggle { display: block; }
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+      }
+      nav ul.open { left: 0; }
+      h1 { font-size: 2.5rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+    }
+  </style>
 </head>
 <body>
-<div id="loader-bg">
-<div class="spark-loader">
-<div class="spark-logo"><span>SI</span></div>
-<div class="spark-loader-text">SPARK Institute...</div>
-</div>
-</div>
-<header>
-<nav>
-<div class="logo">SI</div>
-<button class="navbar-toggle" aria-label="Toggle navigation">
-<i class="fas fa-bars"></i>
-</button>
-<ul>
-<li><a href="index.html" class="active">Home</a></li>
-<li><a href="about.html">About Us</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="admissions.html">Admissions</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="events.html">Events</a></li>
-<li><a href="contact.html">Contact Us</a></li>
-</ul>
-</nav>
-</header>
-<main>
-<section class="hero fade-in">
-<div class="hero-bg-slideshow">
-<img src="public/assets/images/ONE.jpg" class="hero-bg-slide active" alt="SPARK Institute 1" />
-<img src="public/assets/images/two.jpg" class="hero-bg-slide" alt="SPARK Institute 2" />
-<img src="public/assets/images/three.png" class="hero-bg-slide" alt="SPARK Institute 3" />
-<img src="public/assets/images/ten.png" class="hero-bg-slide" alt="SPARK Institute 4" />
-<img src="public/assets/images/school.jpg" class="hero-bg-slide" alt="SPARK Institute 5" />
-<div class="hero-content-overlay">
-<div class="hero-content">
-<div class="hero-logo">
-<img src="logo.png" alt="SPARK Institute Logo">
-</div>
-<h1>Welcome to SPARK Institute</h1>
-<p><b>
-Empowering the next generation of data leaders.<br />
-Discover world-class programs, innovative research, and a vibrant academic
-community.
-</b></p>
-<div class="d-flex justify-center gap-4">
-<a href="programs.html" class="cta-button">Explore Programs</a>
-<a href="admissions.html" class="cta-button btn-outline">Apply Now</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="container vma-section fade-in">
-<div class="vision-quote">
-Empowering a data-driven future where insights ignite innovation and transform lives.
-</div>
-<div class="vma-grid">
-<div class="vma-card">
-<div class="vma-icon">
-<i class="fas fa-lightbulb"></i>
-</div>
-<h3>Our Vision</h3>
-<p>We envision a world where data science and statistics are catalysts for positive change, driving innovation across all sectors of society.</p>
-<p>Our vision is to be at the forefront of this transformation, creating a future where data-driven insights lead to better decisions, improved outcomes, and enhanced quality of life for all.</p>
-</div>
-<div class="vma-card">
-<div class="vma-icon">
-<i class="fas fa-bullseye"></i>
-</div>
-<h3>Our Mission</h3>
-<p>At SPARK Institute, we are committed to excellence in data science education and research. Our mission encompasses four key pillars:</p>
-<ul class="mission-list">
-<li>
-<i class="fas fa-graduation-cap"></i>
-<div>
-<strong>Educate and Train</strong>
-Equip individuals with cutting-edge data science skills through rigorous academic programs and hands-on learning experiences.
-</div>
-</li>
-<li>
-<i class="fas fa-flask"></i>
-<div>
-<strong>Innovate and Research</strong>
-Foster groundbreaking research that addresses real-world challenges and pushes the boundaries of data science and statistics.
-</div>
-</li>
-<li>
-<i class="fas fa-handshake"></i>
-<div>
-<strong>Collaborate and Partner</strong>
-Build strong networks with industry leaders, academic institutions, and communities to maximize impact and create opportunities.
-</div>
-</li>
-<li>
-<i class="fas fa-chart-line"></i>
-<div>
-<strong>Promote Data Literacy</strong>
-Empower diverse stakeholders with the knowledge and tools to harness data's potential for informed decision-making.
-</div>
-</li>
-</ul>
-</div>
-<div class="vma-card">
-<div class="vma-icon">
-<i class="fas fa-university"></i>
-</div>
-<h3>About SPARK Institute</h3>
-<p>SPARK Institute stands as a beacon of excellence in data science and applied statistics education. We combine theoretical rigor with practical application to prepare students for the data-driven economy.</p>
-<p>Our institute is built on a foundation of innovation, collaboration, and real-world impact. We believe in the transformative power of data and are dedicated to nurturing the next generation of data scientists and statisticians.</p>
-<div class="about-features">
-<div class="about-feature">
-<i class="fas fa-award"></i>
-<h4>Accredited Programs</h4>
-<p>Undergraduate, graduate, and certificate levels</p>
-</div>
-<div class="about-feature">
-<i class="fas fa-chalkboard-teacher"></i>
-<h4>Expert Faculty</h4>
-<p>Global research recognition</p>
-</div>
-<div class="about-feature">
-<i class="fas fa-microscope"></i>
-<h4>Modern Labs</h4>
-<p>State-of-the-art facilities</p>
-</div>
-<div class="about-feature">
-<i class="fas fa-users"></i>
-<h4>Community</h4>
-<p>Active student network</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="container">
-<h2 class="text-center">Upcoming Events</h2>
-<div class="main-grid">
-<div class="event-card fade-in">
-<h3>Data Science Webinar</h3>
-<p>Nov 15, 2025 — Online</p>
-<p>Join us for an insightful webinar on the latest trends in data science.</p>
-<a href="events.html" class="btn btn-secondary">Learn More</a>
-</div>
-<div class="event-card fade-in">
-<h3>Statistics Conference 2025</h3>
-<p>Dec 5, 2025 — Main Auditorium</p>
-<p>Keynote speakers and panel discussions on modern statistics.</p>
-<a href="events.html" class="btn btn-secondary">Learn More</a>
-</div>
-<div class="event-card fade-in">
-<h3>Machine Learning Workshop</h3>
-<p>Jan 10, 2026 — Room 204</p>
-<p>Hands-on workshop focusing on practical applications of machine learning.</p>
-<a href="events.html" class="btn btn-secondary">Learn More</a>
-</div>
-</div>
-</section>
-<section id="technologies" class="container fade-in">
-<h2 class="text-center">Technologies We Use</h2>
-<p class="text-center">Our programs and research leverage cutting-edge tools and frameworks to tackle real-world challenges in data science and statistics.</p>
-<div class="tech-filters">
-<button data-filter="all" class="active">All</button>
-<button data-filter="programming">Programming</button>
-<button data-filter="machine-learning">Machine Learning</button>
-<button data-filter="data-visualization">Data Visualization</button>
-</div>
-<div class="main-grid">
-<div class="tech-card" data-category="programming">
-<i class="fab fa-python tech-icon"></i>
-<div class="tech-meta">
-<span class="category">Programming</span>
-</div>
-<h3>Python</h3>
-<p>A versatile language for data analysis, machine learning, and big data processing, led by our Python scholar, Kepha Cherop.</p>
-<a href="https://www.python.org" class="btn" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
-</div>
-<div class="tech-card" data-category="programming">
-<i class="fab fa-r-project tech-icon"></i>
-<div class="tech-meta">
-<span class="category">Programming</span>
-</div>
-<h3>R</h3>
-<p>A powerful tool for statistical analysis and data visualization, widely used in our research labs.</p>
-<a href="https://www.r-project.org" class="btn" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
-</div>
-<div class="tech-card" data-category="machine-learning">
-<i class="fas fa-brain tech-icon"></i>
-<div class="tech-meta">
-<span class="category">Machine Learning</span>
-</div>
-<h3>TensorFlow</h3>
-<p>An open-source framework for building and deploying machine learning models, used in our advanced data science courses.</p>
-<a href="https://www.tensorflow.org" class="btn" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
-</div>
-<div class="tech-card" data-category="data-visualization">
-<i class="fas fa-chart-line tech-icon"></i>
-<div class="tech-meta">
-<span class="category">Data Visualization</span>
-</div>
-<h3>Tableau</h3>
-<p>A leading platform for interactive data visualization, empowering our students to create impactful dashboards.</p>
-<a href="https://www.tableau.com" class="btn" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
-</div>
-<div class="tech-card" data-category="programming">
-<i class="fas fa-database tech-icon"></i>
-<div class="tech-meta">
-<span class="category">Programming</span>
-</div>
-<h3>SQL</h3>
-<p>Essential for managing and querying large datasets, integral to our data science curriculum.</p>
-<a href="https://www.mysql.com" class="btn" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
-</div>
-</div>
-</section>
-</main>
-<footer>
-<div class="footer-content">
-<div>
-<h4>SPARK Institute</h4>
-<p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
-<p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
-<p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
-</div>
-<div>
-<h4>Quick Links</h4>
-<ul>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="admissions.html">Admissions</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</div>
-<div>
-<h4>Connect With Us</h4>
-<p>
-<a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
-<a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-</p>
-</div>
-</div>
-<div class="footer-bottom">
-<p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
-<p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-</div>
-</footer>
-<script>
-window.addEventListener("DOMContentLoaded", function () {
-if (window.__loaderHandled) return;
-window.__loaderHandled = true;
-setTimeout(function () {
-var loader = document.getElementById("loader-bg");
-if (loader) {
-loader.style.opacity = 0;
-setTimeout(function () {
-loader.style.display = "none";
-}, 700);
-}
-}, 1200);
-const navToggle = document.querySelector(".navbar-toggle");
-const navUl = document.querySelector("nav ul");
-if (navToggle && navUl) {
-navToggle.addEventListener("click", function () {
-navUl.classList.toggle("open");
-});
-navUl.querySelectorAll("a").forEach((link) => {
-link.addEventListener("click", () => navUl.classList.remove("open"));
-});
-}
-const techFilters = document.querySelectorAll(".tech-filters button");
-const techCards = document.querySelectorAll(".tech-card");
-techFilters.forEach(button => {
-button.addEventListener("click", () => {
-techFilters.forEach(btn => btn.classList.remove("active"));
-button.classList.add("active");
-const filter = button.getAttribute("data-filter");
-techCards.forEach(card => {
-if (filter === "all" || card.getAttribute("data-category") === filter) {
-card.style.display = "block";
-} else {
-card.style.display = "none";
-}
-});
-});
-});
-});
-setTimeout(function () {
-var loader = document.getElementById("loader-bg");
-if (loader && loader.style.display !== "none") {
-loader.style.opacity = 0;
-loader.style.display = "none";
-}
-}, 3000);
-window.addEventListener("DOMContentLoaded", function () {
-const slides = document.querySelectorAll(".hero-bg-slide");
-let idx = 0;
-setInterval(() => {
-slides[idx].classList.remove("active");
-idx = (idx + 1) % slides.length;
-slides[idx].classList.add("active");
-}, 4000);
-});
-</script>
+
+  <!-- Loader -->
+  <div id="loader-bg">
+    <div class="spark-loader">
+      <div class="spark-logo">SI</div>
+      <div class="spark-loader-text">SPARK Institute...</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="logo.png" alt="SPARK Institute Logo" />
+        <span>SPARK Institute</span>
+      </div>
+      <button class="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero with Slideshow -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image: url('public/assets/images/ONE.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('public/assets/images/two.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('public/assets/images/three.png');"></div>
+      <div class="hero-slide" style="background-image: url('public/assets/images/ten.png');"></div>
+      <div class="hero-slide" style="background-image: url('public/assets/images/school.jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to SPARK Institute</h1>
+      <p><strong>Empowering the next generation of data leaders. Discover world-class programs, innovative research, and a vibrant academic community.</strong></p>
+      <div class="hero-buttons">
+        <a href="programs.html" class="btn btn-primary">Explore Programs</a>
+        <a href="admissions.html" class="btn btn-outline">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- e-Learning Portal CTA -->
+  <section class="cta-section">
+    <h2>Access Your Learning Materials</h2>
+    <p style="color:white;">Log in to our secure e-Learning portal to access courses, assignments, and research tools.</p>
+    <a href="https://spark.pythonanywhere.com" class="btn btn-primary cta-button-large" target="_blank">
+      <i class="fas fa-graduation-cap"></i> Visit e-Learning Portal
+    </a>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">Our Vision & Mission</h2>
+      <div class="main-grid">
+        <!-- Vision -->
+        <div class="vision-mission-card">
+          <h3><i class="fas fa-lightbulb"></i> Our Vision</h3>
+          <p>To be a globally recognized leader in data science and applied statistics education, driving innovation and transforming lives through data-driven decision-making.</p>
+          <p>We envision a future where data literacy empowers individuals and institutions across Africa and beyond to solve real-world challenges with intelligence, ethics, and impact.</p>
+        </div>
+
+        <!-- Mission -->
+        <div class="vision-mission-card">
+          <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+          <p>We are committed to excellence in education, research, and community engagement. Our mission is to:</p>
+          <ul>
+            <li>Educate and train the next generation of data scientists with cutting-edge skills.</li>
+            <li>Conduct impactful research that addresses regional and global challenges.</li>
+            <li>Promote data literacy and democratize access to data science tools.</li>
+            <li>Foster collaboration between academia, industry, and government.</li>
+            <li>Equip students with ethical, technical, and entrepreneurial competencies.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">Upcoming Events</h2>
+      <div class="main-grid">
+        <div class="vision-mission-card">
+          <h3>Data Science Webinar</h3>
+          <div style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Nov 15, 2025 — Online</div>
+          <p>Join us for an insightful webinar on the latest trends in data science and AI, featuring industry leaders and faculty research.</p>
+          <a href="events.html" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="vision-mission-card">
+          <h3>Statistics Conference 2025</h3>
+          <div style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Dec 5, 2025 — Main Auditorium</div>
+          <p>Keynote speakers and panel discussions on modern statistics and real-world applications in healthcare and finance.</p>
+          <a href="events.html" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="vision-mission-card">
+          <h3>Machine Learning Workshop</h3>
+          <div style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Jan 10, 2026 — Room 204</div>
+          <p>Hands-on workshop focusing on practical applications of machine learning and deep learning using real datasets.</p>
+          <a href="events.html" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section style="background: var(--surface-alt);">
+    <div class="container">
+      <h2 class="text-center">Why Choose SPARK Institute?</h2>
+      <div class="main-grid">
+        <div class="card">
+          <i class="fas fa-award"></i>
+          <h3>Accredited Programs</h3>
+          <p>Undergraduate, graduate, and certificate levels with industry-recognized accreditation and global standards.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>Expert Faculty</h3>
+          <p>World-class instructors with global research recognition and extensive industry experience.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-microscope"></i>
+          <h3>Modern Labs</h3>
+          <p>State-of-the-art computing labs equipped with the latest data science, ML, and visualization tools.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Community</h3>
+          <p>Join a vibrant student network, coding clubs, hackathons, and collaborative research projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies We Use -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">Technologies We Use</h2>
+      <p class="text-center">We integrate industry-leading tools and platforms to deliver a cutting-edge data science education.</p>
+      <div class="main-grid">
+        <!-- Python -->
+        <div class="vision-mission-card">
+          <h3><i class="fab fa-python" style="color: #3776AB;"></i> Python</h3>
+          <p>Whether you're new to programming or an experienced developer, it's easy to learn and use Python. It's the most popular language in data science and machine learning.</p>
+          <a href="https://www.python.org" target="_blank" class="btn btn-outline">Learn More</a>
+        </div>
+
+        <!-- R -->
+        <div class="vision-mission-card">
+          <h3><i class="fab fa-r-project" style="color: #276498;"></i> R</h3>
+          <p>R is a free software environment for statistical computing and graphics. It compiles and runs on UNIX, Windows, and macOS, and is widely used in academia and industry.</p>
+          <a href="https://www.r-project.org" target="_blank" class="btn btn-outline">Learn More</a>
+        </div>
+
+        <!-- MySQL -->
+        <div class="vision-mission-card">
+          <h3><i class="fas fa-database" style="color: #F29111;"></i> MySQL</h3>
+          <p>MySQL HeatWave enables automated generative AI and machine learning in one cloud service for transactions and analytics. Trusted for scalability and reliability.</p>
+          <a href="https://www.mysql.com" target="_blank" class="btn btn-outline">Learn More</a>
+        </div>
+
+        <!-- TensorFlow -->
+        <div class="vision-mission-card">
+          <h3><i class="fab fa-tensorflow" style="color: #FF6F00;"></i> TensorFlow</h3>
+          <p>An end-to-end open-source platform for machine learning. TensorFlow has a comprehensive ecosystem of tools, libraries, and community resources.</p>
+          <a href="https://www.tensorflow.org" target="_blank" class="btn btn-outline">Learn More</a>
+        </div>
+
+        <!-- Tableau -->
+        <div class="vision-mission-card">
+          <h3><i class="fas fa-chart-line" style="color: #2F4F74;"></i> Tableau</h3>
+          <p>Tableau Next is the world's first agentic analytics platform, turning trusted insights into autonomous action anytime, anywhere.</p>
+          <a href="https://www.tableau.com" target="_blank" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>SPARK Institute</h4>
+        <p>Namugere Arcade, Plot 204, First Floor, Jinja City, Uganda</p>
+        <p>Email: <a href="mailto:sparkinstitute2025@outlook.com">sparkinstitute2025@outlook.com</a></p>
+        <p>Phone: <a href="tel:+256706507280">+256 706507280</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <p>
+          <a href="#" class="icon-link"><i class="fab fa-twitter"></i> Twitter</a><br>
+          <a href="#" class="icon-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SPARK Institute of Data Science and Applied Statistics. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menu Toggle
+    const toggle = document.querySelector('.navbar-toggle');
+    const menu = document.querySelector('nav ul');
+    toggle?.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Close menu on link click
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+
+    // Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 4000);
+    showSlide(currentSlide);
+
+    // Loader
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader-bg');
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
